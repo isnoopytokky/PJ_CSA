@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+                                         "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+ <session-factory>
+  <mapping class="csa.spring.model.CattleAuctionkokun"/>
+  <mapping class="csa.spring.model.CattleAuctionpun"/>
+  <mapping class="csa.spring.model.CattleAuctionpunHasFestivity"/>
+  <mapping class="csa.spring.model.CattleAuctionpunHasFestivityId"/>
+  <mapping class="csa.spring.model.CattleDetails"/>
+  <mapping class="csa.spring.model.CattleShows"/>
+  <mapping class="csa.spring.model.CattleShowsHasFestivity"/>
+  <mapping class="csa.spring.model.CattleShowsHasFestivityId"/>
+  <mapping class="csa.spring.model.ColorType"/>
+  <mapping class="csa.spring.model.Farm"/>
+  <mapping class="csa.spring.model.Festivity"/>
+  <mapping class="csa.spring.model.GenType"/>
+  <mapping class="csa.spring.model.Intimation"/>
+  <mapping class="csa.spring.model.Member"/>
+  <mapping class="csa.spring.model.Pay"/>
+  <mapping class="csa.spring.model.Report"/>
+  <mapping class="csa.spring.model.StatusNo"/>
+  <mapping class="csa.spring.model.Type"/>
+  <mapping class="csa.spring.model.Typecow"/>
+  <mapping class="csa.spring.model.Worktogether"/>
+  <!--   <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+  <property name="hibernate.connection.password">root</property>
+  <property name="hibernate.connection.url">jdbc:mysql://localhost/farm</property>
+  <property name="hibernate.connection.username">root</property>
+  <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property> -->
+ </session-factory>
+</hibernate-configuration>

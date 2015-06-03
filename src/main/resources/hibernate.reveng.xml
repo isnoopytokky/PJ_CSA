@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+  <table-filter match-catalog="farm" match-name="cattle_auctionkokun"/>
+  <table-filter match-catalog="farm" match-name="cattle_auctionpun"/>
+  <table-filter match-catalog="farm" match-name="cattle_auctionpun_has_festivity"/>
+  <table-filter match-catalog="farm" match-name="cattle_details"/>
+  <table-filter match-catalog="farm" match-name="cattle_shows"/>
+  <table-filter match-catalog="farm" match-name="cattle_shows_has_festivity"/>
+  <table-filter match-catalog="farm" match-name="color_type"/>
+  <table-filter match-catalog="farm" match-name="farm"/>
+  <table-filter match-catalog="farm" match-name="festivity"/>
+  <table-filter match-catalog="farm" match-name="gen_type"/>
+  <table-filter match-catalog="farm" match-name="intimation"/>
+  <table-filter match-catalog="farm" match-name="member"/>
+  <table-filter match-catalog="farm" match-name="pay"/>
+  <table-filter match-catalog="farm" match-name="report"/>
+  <table-filter match-catalog="farm" match-name="status _no"/>
+  <table-filter match-catalog="farm" match-name="type"/>
+  <table-filter match-catalog="farm" match-name="typecow"/>
+  <table-filter match-catalog="farm" match-name="worktogether"/>
+</hibernate-reverse-engineering>
