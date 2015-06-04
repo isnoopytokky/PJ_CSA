@@ -77,7 +77,7 @@
 			src="<c:url value=  "resources/img/o1.png"/> "
 			height="40"></a>
         </div>
-             <li ><a href="logout.jsp" class="fa fa-times">ออกจากระบบ</a></li>
+             <li ><a href="logout" class="fa fa-times">ออกจากระบบ</a></li>
              </ul>
            </div>
            </nav>

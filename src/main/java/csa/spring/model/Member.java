@@ -28,7 +28,7 @@ public class Member implements java.io.Serializable {
 	private String name;
 	private String surname;
 	private String address;
-	private Integer farm;
+	private String farm;
 	private String tel;
 
 	public Member() {
@@ -39,7 +39,7 @@ public class Member implements java.io.Serializable {
 	}
 
 	public Member(StatusNo statusNo, String user, String pass, String email, String idcard, String name,
-			String surname, String address, Integer farm, String tel) {
+			String surname, String address, String farm, String tel) {
 		this.statusNo = statusNo;
 		this.user = user;
 		this.pass = pass;
@@ -137,11 +137,11 @@ public class Member implements java.io.Serializable {
 	}
 
 	@Column(name = "farm")
-	public Integer getFarm() {
+	public String getFarm() {
 		return this.farm;
 	}
 
-	public void setFarm(Integer farm) {
+	public void setFarm(String farm) {
 		this.farm = farm;
 	}
 

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 
 
+
 import csa.spring.dao.MemberDao;
 import csa.spring.model.Member;
 
@@ -55,6 +56,12 @@ public class MemberDaoImpl implements MemberDao{
 	public List getchkuser(String username) {
 		// TODO Auto-generated method stub
 		return session.getCurrentSession().createQuery("from Member where user='"+username+"'").list();
+	}
+	
+	@Override
+	public List login(String username, String password) {
+		// TODO Auto-generated method stub
+		return session.getCurrentSession().createQuery("from Member where user='"+username+"' and pass='"+password+"'").list();
 	}
 
 }

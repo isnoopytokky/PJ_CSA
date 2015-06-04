@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 
+
 import csa.spring.dao.MemberDao;
 import csa.spring.model.Member;
 import csa.spring.service.MemberService;
@@ -56,6 +57,14 @@ public class MemberServiceImpl implements MemberService{
 	public List getchkuser(String username) {
 		// TODO Auto-generated method stub
 		return memberDao.getchkuser(username);
+	}
+
+	@Override
+	public List login(String username, String password) {
+		// TODO Auto-generated method stub
+		//return memberDao.login(username,password);
+		List result = memberDao.login(username,password);
+		return result;
 	}
 	
 	

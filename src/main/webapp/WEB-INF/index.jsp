@@ -87,12 +87,13 @@
 						<h3 class="modal-title">เข้าสู่ระบบ</h3>
 					</div>
 					<div class="modal-body">
+						<form action="login" method="POST" id="loginForm">
 						<div class="row form-group">
 							<div class="col-md-offset-2 col-md-2">
 								<h4>ชื่อผู้ใช้:</h4>
 							</div>
 							<div class="col-md-6">
-								<input type="text" class="form-control">
+								<input type="text" name="username" class="form-control">
 							</div>
 						</div>
 						<div class="row form-group">
@@ -100,14 +101,18 @@
 								<h4>รหัสผ่าน:</h4>
 							</div>
 							<div class="col-md-6">
-								<input type="password" class="form-control">
+								<input type="password" name="password" class="form-control">
+								
 							</div>
 						</div>
+						</form>
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">ปิด</button>
-						<a href="index_admin"><button type="button"
-								class="btn btn-primary">ล็อคอิน</button></a>
+						<!-- <a href="index_admin">  -->
+							<button type="button"
+								class="btn btn-primary" id="btn_login">ล็อคอิน</button>
+						<!-- </a> -->
 					</div>
 				</div>
 			</div>
@@ -285,6 +290,40 @@
 	<script src="<c:url value="/resources/js/bootstrap.min.js"/>"></script>
 
 <script type="text/javascript">
+
+//login 
+$(document).on('click','#btn_login',function(s){
+	
+	var user = $("[name=username]").val();
+	var pass = $("[name=password]").val();
+	
+	
+	var msg ="";
+	if (user==""){
+		msg+="กรุณากรอกชื่อผู้ใช้\n";
+	}
+	if (pass==""){
+		msg+="กรุณากรอกรหัสผ่าน\n";
+	}
+	
+	if(msg!=""){
+		alert(msg);
+	}
+	else{
+		/*
+		$.post('login',{username:user,password:pass},function(message){
+			if(message=="yes"){
+				alert('do login');	
+			}
+			alert(message);
+		});*/
+		
+		$( "#loginForm" ).submit();
+	}
+	
+});
+
+//register
 $(document).on('click','#add3',function(s){
 	var user = $("#user").val();
 	var pass = $("#password").val();

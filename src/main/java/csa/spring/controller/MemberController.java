@@ -16,22 +16,16 @@ public class MemberController {
 
 	@Autowired
 	FestivityService festivityService;
-	
-	@RequestMapping("/index_member")////หน้าแรกสมาชิก
-	public ModelAndView inmem(){
-		ModelAndView model = new ModelAndView("/csa/member/index_member");
-		return model;
-	}
-	
-	@RequestMapping("/cow_member")////หน้าแรกจัดการโค
+		
+	@RequestMapping("/cow_member")////เธซเธ�เน�เธฒเน�เธฃเธ�เธ�เธฑเธ”เธ�เธฒเธฃเน�เธ�
 	public ModelAndView cm(){
 		ModelAndView model = new ModelAndView("/csa/member/cow_member");
 		return model;
 	}
 	
-	@RequestMapping("/festivity_mem")////หน้างานโคmember
+	@RequestMapping("/festivity_mem")////เธซเธ�เน�เธฒเธ�เธฒเธ�เน�เธ�member
 	public ModelAndView festivity(Map<String, Object> map) {
-		Festivity festivity = new Festivity();//ส่งค่าโมเดลไป
+		Festivity festivity = new Festivity();//เธชเน�เธ�เธ�เน�เธฒเน�เธกเน€เธ”เธฅเน�เธ�
 		map.put("festivity", festivity);
 		map.put("festivitylist",festivityService.getAdmin1());
 		

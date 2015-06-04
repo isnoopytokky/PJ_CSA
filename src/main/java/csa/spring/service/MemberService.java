@@ -13,4 +13,5 @@ public interface MemberService {
 	public List getAllMember();
 	public List getAdmin();
 	public List getchkuser(String username);
+	public List login(String username,String password);
 }

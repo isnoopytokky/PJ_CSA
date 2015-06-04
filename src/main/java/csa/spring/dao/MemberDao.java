@@ -15,4 +15,5 @@ public interface MemberDao {
 	public List getAllMember();
 	public List getAdmin();
 	public List getchkuser(String username);
+	List login(String username, String password);
 }
