@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>แอดมิน</title>
+<title>เจ้าหน้าที่</title>
 <meta name="viewport"
 	content="initial-scale=1,maximum-scale=1,user-scalable=no">
 <meta name="smartaddon-verification"
@@ -35,7 +35,7 @@
 	class="navbar navbar-default navbar-fixed-top">
 <div class="container-fluid">
 	<div class="navbar-header">
-		<a class="navbar-brand" href="index_member"><img
+		<a class="navbar-brand" href="index_official"><img
 			src="<c:url value=  "resources/img/b1.png"/> "
 			height="40"></a>
 		<button type="button" class="navbar-toggle" data-toggle="collapse"
@@ -47,19 +47,36 @@
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="navbar-collapse-5">
-         
-             <ul class="nav navbar-nav">
-            <li><a href="cow_member">จัดการโค</a></li>
-            <li class="active"><a class="nav-link current" href="festivity_mem">งานโค</a></li>
+          <ul class="nav navbar-nav">
+            <!-- <li><a href="admin_section.jsp">หน้าแรก</a></li> -->
+           
+              <!-- ดอบดาว -->
+            <!-- ดอบดาว -->
+            <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">จัดการโค <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="official_viewcowsh">โคประกวด</a></li>
+                <li><a href="official_viewcow2">โคประมูล</a></li>
                
+                </ul>
+                </li>
+              </ul>
+              <!-- ปิดดอบดาว -->  
+           </ul>
+             <ul class="nav navbar-nav">
+            <li class="active"><a class="nav-link current" href="work_official">งานโค</a></li>
+           
+              
+                <li><a href="report_official">ออกรายงาน</a></li>
+                  <li><a href="official_setlist">ตั้งค่ารายการ</a></li>
             </ul>
              <ul class="nav navbar-nav navbar-right">
-               <div class="navbar-header">
+              <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-5">
             <span class="sr-only">Toggle navigation</span>
           </button>
-         <a class="navbar-brand" href="edit_member.jsp"><img
-			src="<c:url value=  "resources/img/m1.png"/> "
+         <a class="navbar-brand" href=""><img src="<c:url value="resources/img/a1.png"/> "
 			height="40"></a>
         </div>
              <li ><a href="logout" class="fa fa-times">ออกจากระบบ</a></li>
@@ -67,8 +84,7 @@
            </div>
            </div>
            </nav>
-           </header>
-	
+</header>
 <div align="center"><h1>งานโค</h1></div>
 <hr>
 
@@ -89,7 +105,11 @@
               </ul>
               <div id="myTabContent" class="tab-content">
                 <div class="tab-pane fade active in" id="home1">
-                
+                 
+                 
+                 <div>
+                 <a href="newfestivity_official"><button type="button" class="btn btn-success fui-plus-circle"> เพิ่มงานโคประกวด</button></a>
+                 </div>
                  <br>
                  <table class="table table-striped table-hover  table-bordered">
 				<thead>
@@ -98,6 +118,9 @@
 				    	<th align="center">ชื่องาน</th>
 				        <th align="center">ประเภทงาน</th>
 				        <th align="center">วันเริ่มงาน</th>
+				        <th align="center">สถานะงาน</th>
+				        <th align="center">แก้ไข</th>
+				        <th align="center">ลบ</th>
 				        <th align="center">นำโคร่วมงาน</th>
 				      </tr>
 				    </thead>
@@ -107,8 +130,12 @@
 				    <td><div align="center">${festivity.title}</div></td>
 				    <td><div align="center">${festivity.gene}</div></td>
 				    <td><div align="center">${festivity.SWork}</div></td>
-				        
-				        <td><div align="center"><a href="mem_addfes_sh"><button type="button" class="btn btn-success">
+				    <td><div align="center" class="col-md-offset-3"><input type='checkbox' checked data-toggle='switch' id='custom-switch-01' /></div></td>
+				        <td><div align="center"><a href="#"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit">
+				        	<span class="glyphicon glyphicon-pencil"></span></button></a></div></td>
+				        <td><div align="center"><a href="#"><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete">
+				        	<span class="glyphicon glyphicon-remove"></span></button></a></div></td>
+				        <td><div align="center"><a href="official_addfes_sh"><button type="button" class="btn btn-success">
 				        	<span class="glyphicon glyphicon-plus-sign"></span></button></a></div></td>
 				      </tr>
 
@@ -117,7 +144,10 @@
 			
                 </div>
                 <div class="tab-pane fade" id="profile1">
-               
+                  
+                  <div>
+                 <a href="newfestivity_official"><button type="button" class="btn btn-warning  fui-plus-circle"> เพิ่มงานประมูลโคพันธุ์</button></a>
+                 </div>
                  <br>
                  <table class="table table-striped table-hover  table-bordered">
 				<thead>
@@ -126,6 +156,9 @@
 				    	<th align="center">ชื่องาน</th>
 				        <th align="center">ประเภทงาน</th>
 				        <th align="center">วันเริ่มงาน</th>
+				        <th align="center">สถานะงาน</th>
+				        <th align="center">แก้ไข</th>
+				        <th align="center">ลบ</th>
 				        <th align="center">นำโคร่วมงาน</th>
 				      </tr>
 				    </thead>
@@ -135,7 +168,12 @@
 				    <td><div align="center">${festivity.title}</div></td>
 				    <td><div align="center">${festivity.gene}</div></td>
 				    <td><div align="center">${festivity.SWork}</div></td>
-				        <td><div align="center"><a href="mem_addfes_2"><button type="button" class="btn btn-success">
+				    <td><div align="center" class="col-md-offset-3"><input type='checkbox' checked data-toggle='switch' id='custom-switch-01' /></div></td>
+				        <td><div align="center"><a href="#"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit">
+				        	<span class="glyphicon glyphicon-pencil"></span></button></a></div></td>
+				        <td><div align="center"><a href="#"><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete">
+				        	<span class="glyphicon glyphicon-remove"></span></button></a></div></td>
+				        <td><div align="center"><a href="official_addfes_2"><button type="button" class="btn btn-success">
 				        	<span class="glyphicon glyphicon-plus-sign"></span></button></a></div></td>
 				      </tr>
 
@@ -144,7 +182,10 @@
 			
                 </div>
                  <div class="tab-pane fade" id="profile2">
-                
+                 
+                 <div>
+                 <a href="newfestivity_official"><button type="button" class="btn btn-danger  fui-plus-circle"> เพิ่มงานประมูลโคขุน</button></a>
+                 </div>
                  <br>
                  <table class="table table-striped table-hover  table-bordered">
 				<thead>
@@ -153,6 +194,9 @@
 				    	<th align="center">ชื่องาน</th>
 				        <th align="center">ประเภทงาน</th>
 				        <th align="center">วันเริ่มงาน</th>
+				        <th align="center">สถานะงาน</th>
+				        <th align="center">แก้ไข</th>
+				        <th align="center">ลบ</th>
 				        <th align="center">นำโคร่วมงาน</th>
 				      </tr>
 				    </thead>
@@ -162,8 +206,12 @@
 				    <td><div align="center">${festivity.title}</div></td>
 				    <td><div align="center">${festivity.gene}</div></td>
 				    <td><div align="center">${festivity.SWork}</div></td>
-				    
-				        <td><div align="center"><a href="mem_addfes_3"><button type="button" class="btn btn-success">
+				    <td><div align="center" class="col-md-offset-3"><input type='checkbox' checked data-toggle='switch' id='custom-switch-01' /></div></td>
+				        <td><div align="center"><a href="#"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit">
+				        	<span class="glyphicon glyphicon-pencil"></span></button></a></div></td>
+				        <td><div align="center"><a href="#"><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete">
+				        	<span class="glyphicon glyphicon-remove"></span></button></a></div></td>
+				        <td><div align="center"><a href="official_addfes_3"><button type="button" class="btn btn-success">
 				        	<span class="glyphicon glyphicon-plus-sign"></span></button></a></div></td>
 				      </tr>
 

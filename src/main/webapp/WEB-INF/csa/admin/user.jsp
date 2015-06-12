@@ -99,6 +99,8 @@
 	       <h4 class="panel-title" style="font-size: 25px;">รายชื่อสมาชิก</h4>
 	   	</div>
 		<div class="panel-body">
+		
+		<!-- 
 		  	<table class="table table-striped table-hover  table-bordered">
 				<thead>
 					<tr>
@@ -150,6 +152,73 @@
 		        	<button type="button" class="btn btn-success glyphicon glyphicon-print"> พิมพ์ใบเสร็จทั้งหมด</button>
 		        </p></div>        
 		   	</div>
+		   	-->
+		   	<table class="table table-striped table-hover  table-bordered">		  	
+		  		<!--
+		  		<button type="button" class="btn btn-success fui-plus-circle"><a href="newfestivity"><font color="white"> เพิ่มงานโค</font></a></button>
+		  		 -->
+				<thead>
+					<tr>
+						<th><center>ลำดับที่</center></th>
+				    	<th><center>ชื่อผู้ใช้</center></th>
+				        <th><center>ชื่อ</center></th>
+				        <th><center>นามสกุล</center></th>
+				        <th><center>เบอร์โทร</center></th>
+				        <th><center>สถานะ</center></th>
+				        <th><center>แก้ไข</center></th>
+				        <th><center>ลบ</center></th>
+				        <th><center>รายละเอียด</center></th>
+			      </tr>
+			    </thead>
+			    <tbody>		   	
+					<c:forEach items="${memberlist }" var="member" varStatus="loop">		  	
+					
+			      	<tr>
+				  
+				    <td><div align="center">${loop.index+1}</div></td>
+				    <td><div align="center">${member.user}</div></td>
+				    <td><div align="center">${member.name}</div></td>
+				    <td><div align="center">${member.surname}</div></td>
+				    <td><div align="center">${member.tel}</div></td>
+				    <td><div align="center">
+						    <c:choose>
+						    	<c:when test="${member.statusNo.statusName.equals('ผู้ดูแลระบบ')}">
+							        ${member.statusNo.statusName}
+							    </c:when>
+							    <c:when test="${member.statusNo.statusName.equals('เจ้าหน้าที่')}">
+							        ${member.statusNo.statusName}
+							    </c:when>							    
+							    <c:when test="${member.statusNo.statusName.equals('เจ้าหน้าที่')}">
+							        ${member.statusNo.statusName}
+							    </c:when>
+							    <c:when test="${member.statusNo.statusName.equals('เจ้าหน้าที่')}">
+							        ${member.statusNo.statusName}
+							    </c:when>
+							    <c:otherwise>
+							        ${member.statusNo.statusName}
+							    </c:otherwise>
+							</c:choose>				    
+						    </div></td>				    
+				        <td><center><a href="#" onclick="onClickEdit('${member.id}')"><button type="button" class="btn btn-primary">
+				        	<span class="glyphicon glyphicon-pencil"></span></button></a></center></td>
+				        
+				        <td><center><a href="#" onclick="onClickDelete('${member.id}')"><button type="button" class="btn btn-danger">
+				        	<span class="glyphicon glyphicon-remove"></span></button></a></center></td>
+				        
+				        <td><center><a href="#" onclick="onClickView('${member.id}')"><button type="button" class="btn btn-success">
+				        	<span class="glyphicon glyphicon-list"></span></button></a></center></td>
+					</tr>
+
+				
+		   	</c:forEach>
+		   	</tbody>
+			</table>
+		    <div class="row">
+		        <div class="col-md-offset-10"><p>
+		        	<!-- <button type="button" class="btn btn-success glyphicon glyphicon-print"> พิมพ์ใบเสร็จทั้งหมด</button>  -->
+		        </p></div>        
+		   	</div>
+		   	
 		</div>
 	</div>
 	</div>
@@ -161,14 +230,235 @@
 
 <div class="container">
 		<!-- modal -->
-		<div id="log" class="modal fade">
+		<div id="modal-edit" class="modal fade">
 			<div class="modal-dialog">
 				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-hidden="true"></button>
+						<h3 class="modal-title">แก้ไขข้อมูลสมาชิก</h3>
+					</div>
+					<form:form action="" commandName="member" id="member">
+					<div class="modal-body">
+						<div class="row form-group">
+							<div class="col-md-offset-2 col-md-2">
+								<h4>ชื่อผู้ใช้:</h4>
+							</div>
+							<div class="col-md-6">
+								<form:input path="id" id="id" class="form-control hide"/>
+								<form:input path="user" id="user" class="form-control"/>
+							</div>
+						</div>
+						<div class="row form-group">
+							<div class="col-md-offset-2 col-md-2">
+								<h4>รหัสผ่าน:</h4>
+							</div>
+							<div class="col-md-6">
+								<form:password path="pass" id="password" class="form-control"/>
+							</div>
+						</div>
+						<div class="row form-group">
+							<div class="col-md-offset-2 col-md-2">
+								<h4>ยืนยัน-รหัสผ่าน:</h4>
+							</div>
+							<div class="col-md-6">
+								<input type="password" name="password2" id="password2" class="form-control"/>
+							</div>
+						</div>
+						<div class="row form-group">
+							<div class="col-md-offset-2 col-md-2">
+								<h4>อีเมลล์:</h4>
+							</div>
+							<div class="col-md-6">
+								<form:input type="email" path="email" id="email" class="form-control"/>
+							</div>
+						</div>
+						<div class="row form-group">
+							<div class="col-md-offset-2 col-md-2">
+								<h4>เลขประชาชน:</h4>
+							</div>
+							<div class="col-md-6">
+								<form:input path="idcard" id="idcard" class="form-control"/>
+							</div>
+						</div>
+						<div class="row form-group">
+							<div class="col-md-offset-2 col-md-2">
+								<h4>ชื่อ:</h4>
+							</div>
+							<div class="col-md-6">
+								<form:input path="name" id="name" class="form-control"/>
+							</div>
+						</div>
+						<div class="row form-group">
+							<div class="col-md-offset-2 col-md-2">
+								<h4>นามสกุล:</h4>
+							</div>
+							<div class="col-md-6">
+								<form:input path="surname" id="surname" class="form-control"/>
+							</div>
+						</div>
+						<div class="row form-group">
+							<div class="col-md-offset-2 col-md-2">
+								<h4>ที่อยู่:</h4>
+							</div>
+							<div class="col-md-6">
+								<form:input path="address" id="address" class="form-control"/>
+							</div>
+						</div>
+						<div class="row form-group">
+							<div class="col-md-offset-2 col-md-2">
+								<h4>ฟาร์ม:</h4>
+							</div>
+							<div class="col-md-6">
+								<form:input path="farm" id="farm" class="form-control"/>
+							</div>
+						</div>
+						<div class="row form-group">
+							<div class="col-md-offset-2 col-md-2">
+								<h4>เบอร์โทร:</h4>
+							</div>
+							<div class="col-md-6">
+								<form:input path="tel" id="tel" class="form-control"/>
+							</div>
+						</div>
+						<div class="row form-group">
+							<div class="col-md-offset-2 col-md-2">
+								<h4>เบอร์โทร:</h4>
+							</div>
+							<div class="col-md-6">								
+								<form:select path="StatusNo.idstatusNo" id="idstatusNo" class="form-control">
+								 <form:options items="${statusNoList}" />
+								</form:select>
+							</div>
+						</div>
+					</div>
 					
+					</form:form>
+					<div class="modal-footer">
+						
+						<button type="button" class="btn btn-default"  data-dismiss="modal">ปิด</button>
+						<button type="submit" class="btn btn-primary" id="btn_save">บันทึก</button>
+					</div>
 				</div>
 			</div>
 		</div>
 		<!-- modal -->
+		
+		<!-- modal -->
+		<div id="modal-view" class="modal fade">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-hidden="true"></button>
+						<h3 class="modal-title">ดูข้อมูลสมาชิก</h3>
+					</div>
+					<form:form action="" commandName="member" id="member">
+					<div class="modal-body">
+						<div class="row form-group">
+							<div class="col-md-offset-2 col-md-2">
+								<h4>ชื่อผู้ใช้:</h4>
+							</div>
+							<div class="col-md-6">
+								<input type="text" id="modal-view-id" readonly class="form-control hide"/>
+								<input type="text" id="modal-view-user" readonly class="form-control"/>
+							</div>
+						</div>
+						 
+						<div class="row form-group">
+							<div class="col-md-offset-2 col-md-2">
+								<h4>อีเมลล์:</h4>
+							</div>
+							<div class="col-md-6">
+								<input type="text" id="modal-view-email" readonly id="email" class="form-control"/>
+							</div>
+						</div>
+						<div class="row form-group">
+							<div class="col-md-offset-2 col-md-2">
+								<h4>เลขประชาชน:</h4>
+							</div>
+							<div class="col-md-6">
+								<input type="text" id="modal-view-idcard" readonly class="form-control"/>
+							</div>
+						</div>
+						<div class="row form-group">
+							<div class="col-md-offset-2 col-md-2">
+								<h4>ชื่อ:</h4>
+							</div>
+							<div class="col-md-6">
+								<input type="text" id="modal-view-name" readonly class="form-control"/>
+							</div>
+						</div>
+						<div class="row form-group">
+							<div class="col-md-offset-2 col-md-2">
+								<h4>นามสกุล:</h4>
+							</div>
+							<div class="col-md-6">
+								<input type="text" id="modal-view-surname" readonly class="form-control"/>
+							</div>
+						</div>
+						<div class="row form-group">
+							<div class="col-md-offset-2 col-md-2">
+								<h4>ที่อยู่:</h4>
+							</div>
+							<div class="col-md-6">
+								<input type="text" id="modal-view-address" readonly class="form-control"/>
+							</div>
+						</div>
+						<div class="row form-group">
+							<div class="col-md-offset-2 col-md-2">
+								<h4>ฟาร์ม:</h4>
+							</div>
+							<div class="col-md-6">
+								<input type="text" id="modal-view-farm" readonly class="form-control"/>
+							</div>
+						</div>
+						<div class="row form-group">
+							<div class="col-md-offset-2 col-md-2">
+								<h4>เบอร์โทร:</h4>
+							</div>
+							<div class="col-md-6">
+								<input type="text" id="modal-view-tel" readonly class="form-control"/>
+							</div>
+						</div>
+						<div class="row form-group">
+							<div class="col-md-offset-2 col-md-2">
+								<h4>สถานะ:</h4>
+							</div>
+							<div class="col-md-6">
+								<input type="text" id="modal-view-statusNo" readonly class="form-control"/>
+							</div>
+						</div>
+					</div>					
+					</form:form>
+					<div class="modal-footer">						
+						<button type="button" class="btn btn-default"  data-dismiss="modal">ปิด</button>						
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- modal -->
+		
+		<!-- modal -->
+		<div id="modal-delete" class="modal fade">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-hidden="true"></button>
+						<h3 class="modal-title">ลบข้อมูลสมาชิก</h3>						
+					</div>
+					<div class="modal-body">
+						<h4 class="control">คุณต้องการที่จะลบข้อมูลนี้ใช่หรือไหม</h4>
+					</div>
+					<div class="modal-footer">						
+						<button type="button" class="btn btn-default"  data-dismiss="modal">ปิด</button>	
+						<button type="submit" class="btn btn-danger" id="btn_delete">ลบ</button>					
+					</div>
+				</div>
+			</div>
+		</div>
+		
 	</div>
 	
 	<footer class="footer">
@@ -181,8 +471,78 @@
 		</p>
 	</div>
 	</footer>
-	
-<script>
+
+
+	<script type="text/javascript">
+		function getUserInfo(url, params, compName) {
+	        $.post(url, params, function(data) {
+	        	debugger;
+	        	$("#"+ compName +"id").val(params.id);
+	        	$("#"+ compName +"user").val(data.user.user);
+	        	$("#"+ compName +"pass").val(data.user.pass);
+	        	$("#"+ compName +"email").val(data.user.email);
+	        	$("#"+ compName +"idcard").val(data.user.idcard);
+	        	$("#"+ compName +"name").val(data.user.name);
+	        	$("#"+ compName +"surname").val(data.user.surname);
+	        	$("#"+ compName +"address").val(data.user.address);
+	        	$("#"+ compName +"farm").val(data.user.farm);
+	        	$("#"+ compName +"tel").val(data.user.tel);	        	
+	        	//data.statusNoId
+	        	//data.statusNoName
+	        	$("#"+ compName +"statusNo").val(data.statusNoName);	 
+	        	
+	        	if(compName == '')
+	        		$("#idstatusNo").val(data.statusNoId);
+	        });
+		}
+		
+		function deleteUser(url, params, compName) {
+	        $.post(url, params, function(data) {
+	        	if(data=="success")
+        		{
+        			alert( "ลบข้อมูลเรียบร้อย" );
+       	  			$("#modal-delete").modal('hide');
+        		}
+	        	else
+        		{
+	        		alert( "ไม่สามารถลบข้อมูลได้" );
+        		}
+	        });
+		}
+		
+        
+        function onClickEdit(val){        	
+        	getUserInfo('/PJ_CSA/api/getUser', {'id': val}, '');
+            $("#modal-edit").modal('show');
+        }
+        function onClickDelete(val){        	
+            //ajaxLink('/PJ_CSA/api/deleteUser', {'id': val}, 'modal-delete');
+            $("#modal-delete").modal('show');
+        }
+        function onClickView(val){        	
+        	getUserInfo('/PJ_CSA/api/getUser', {'id': val}, 'modal-view-');
+            $("#modal-view").modal('show');
+        }
+        
+        $( "#btn_delete" ).click(function() {
+        	deleteUser('/PJ_CSA/api/deleteUser', {'id': '10'}, 'modal-delete');     
+        	window.location.reload();
+       	});
+        $( "#btn_save" ).click(function() {        	
+        	$.ajax({
+				url:"/PJ_CSA/api/updateUser2",
+				encoding:"UTF-8",
+				method:"POST",
+				data:$("#member").serialize()
+			}).done(function(a){
+				alert("แก้ไขเรียบร้อย");
+				window.location.reload();
+			});
+        	
+       	});
+	</script>
+
+	<script>
 		(function(i, s, o, g, r, a, m) {
 			i['GoogleAnalyticsObject'] = r;
 			i[r] = i[r] || function() {

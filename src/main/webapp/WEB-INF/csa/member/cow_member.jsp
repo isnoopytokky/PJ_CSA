@@ -89,7 +89,7 @@
               <div id="myTabContent" class="tab-content">
                 <div class="tab-pane fade active in" id="home1">
 		  	<div>
-		  	<a href=""><button type="button" class="btn btn-success fui-plus-circle"> เพิ่มโคประกวด</button></a>
+		  	<a href="mem_addcow"><button type="button" class="btn btn-success fui-plus-circle"> เพิ่มโคประกวด</button></a>
 		  	</div><br>
 		  	<table class="table table-striped table-hover  table-bordered">
 				<thead>
@@ -101,7 +101,7 @@
 				        <th><center>เพศ</center></th>
 				        <th><center>แก้ไข</center></th>
 				        <th><center>ลบ</center></th>
-				        <th><center>รายละเอียด</center></th>
+				       
 				      </tr>
 				    </thead>
 				    <tbody>
@@ -112,15 +112,12 @@
 				    <td><div align="center"></div></td>
 				    <td><div align="center"></div></td>
 				    <td><div align="center"></div></td>
-				        <td><center><a href="#"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit">
+				        <td><center><a href="mem_edit_cowsh"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit">
 				        	<span class="glyphicon glyphicon-pencil"></span></button></a></center></td>
 				        
 				        <td><center><a href="#"><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete">
 				        	<span class="glyphicon glyphicon-remove"></span></button></a></center></td>
 				        
-				        <td><center><a href="#"  data-toggle="modal"
-				data-target="#log"><button type="button" class="btn btn-success">
-				        	<span class="glyphicon glyphicon-list"></span></button></a></center></td>
 				      </tr>
 
 				</tbody>
@@ -128,7 +125,7 @@
                 </div>
                 <!----------------------- โคพันธุ์--------------------------------- -->
                 <div class="tab-pane fade" id="profile1">
-                <div><a href="admin_addcow2"><button type="button" class="btn btn-success fui-plus-circle"> เพิ่มโคพันธุ์</button></a></div>
+                <div><a href="mem_addcow2"><button type="button" class="btn btn-success fui-plus-circle"> เพิ่มโคพันธุ์</button></a></div>
                 <br>
                   	<table class="table table-striped table-hover  table-bordered">
 				<thead>
@@ -140,7 +137,6 @@
 				        <th><center>เพศ</center></th>
 				        <th><center>แก้ไข</center></th>
 				        <th><center>ลบ</center></th>
-				        <th><center>รายละเอียด</center></th>
 				      </tr>
 				    </thead>
 				    <tbody>
@@ -151,15 +147,12 @@
 				    <td><div align="center"></div></td>
 				    <td><div align="center"></div></td>
 				    <td><div align="center"></div></td>
-				        <td><center><a href="#?CusID="><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit">
+				        <td><center><a href="mem_edit_cow2"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit">
 				        	<span class="glyphicon glyphicon-pencil"></span></button></a></center></td>
 				        
 				        <td><center><a href="#?CusID="><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete">
 				        	<span class="glyphicon glyphicon-remove"></span></button></a></center></td>
 				        
-				        <td><center><a href="viewcow2.jsp?CusID="  data-toggle="modal"
-				data-target="#log"><button type="button" class="btn btn-success">
-				        	<span class="glyphicon glyphicon-list"></span></button></a></center></td>
 				      </tr>
 
 				</tbody>
@@ -168,7 +161,7 @@
               <!---------------------   โคขุน--------------------------- -->
                  <div class="tab-pane fade" id="profile2">
                  <div>
-                 <a href="admin_addcow3"><button type="button" class="btn btn-success fui-plus-circle"> เพิ่มโคขุน</button></a>
+                 <a href="mem_addcow3"><button type="button" class="btn btn-success fui-plus-circle"> เพิ่มโคขุน</button></a>
                  </div><br>
                  <table class="table table-striped table-hover  table-bordered">
 		  	
@@ -179,7 +172,6 @@
 				        <th><center>สายพันธุ์</center></th>
 				        <th><center>แก้ไข</center></th>
 				        <th><center>ลบ</center></th>
-				        <th><center>รายละเอียด</center></th>
 				      </tr>
 				    </thead>
 				    <tbody>
@@ -189,14 +181,12 @@
 				    <td><div align="center"></div></td>
 				    <td><div align="center"></div></td>
 				   
-				        <td><center><a href="#?CusID="><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit">
+				        <td><center><a href="mem_edit_cow3"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit">
 				        	<span class="glyphicon glyphicon-pencil"></span></button></a></center></td>
 				        
 				        <td><center><a href="#?CusID="><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete">
 				        	<span class="glyphicon glyphicon-remove"></span></button></a></center></td>
 				        
-				        <td><center><button type="button" class="btn btn-success">
-				        	<span class="glyphicon glyphicon-list"></span></button></center></td>
 				      </tr>
 
 				</tbody>

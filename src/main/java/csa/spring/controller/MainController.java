@@ -29,6 +29,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 
+
 import csa.myapp.MD5;
 import csa.spring.model.Festivity;
 import csa.spring.model.Member;
@@ -110,11 +111,32 @@ public class MainController {
 		return model;
 	}
 	
+	// Begin user menu 
 	@RequestMapping("/user")/////เธซเธ�เน�เธฒเธชเธกเธฒเธ�เธดเธ�
-	public ModelAndView user(){
+	public ModelAndView user(Map<String, Object> map){
+		
+		Member member = new Member();//เธชเน�เธ�เธ�เน�เธฒเน�เธกเน€เธ”เธฅเน�เธ�
+		map.put("member", member);
+		map.put("memberlist",memberService.getAllMember());
+		
+		
+		Map<String,String> statusNoList = new HashMap<String, String>();		
+		List statusNoResult;
+		statusNoResult = statusnoService.getAllStatusNo();		
+		for(int i = 0;i<statusNoResult.size();i++)
+		{	
+			StatusNo statusNo =  (StatusNo) statusNoResult.get(i);
+			statusNoList.put(statusNo.getIdstatusNo().toString(), statusNo.getStatusName());
+		}	
+		map.put("statusNoList",statusNoList);
+		
 		ModelAndView model = new ModelAndView("/csa/admin/user");
 		return model;
 	}
+	
+	
+	
+	// End user menu
 	
 	@RequestMapping("/festivity")///เธ�เธฒเธ�เธ�เธฒเน�เธ�
 	public ModelAndView festivity(Map<String, Object> map) {
@@ -176,6 +198,9 @@ public class MainController {
 		map.put("member", memberResult);
 		return "redirect:festivity";
 	}
+	
+	
+	
 	
 	@ResponseBody
 	@RequestMapping(value="checkuser")

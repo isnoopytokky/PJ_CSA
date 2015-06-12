@@ -35,7 +35,7 @@
 	class="navbar navbar-default navbar-fixed-top">
 <div class="container-fluid">
 	<div class="navbar-header">
-		<a class="navbar-brand" href="index_admin"><img
+		<a class="navbar-brand" href="index_official"><img
 			src="<c:url value=  "resources/img/b1.png"/> "
 			height="40"></a>
 		<button type="button" class="navbar-toggle" data-toggle="collapse"
@@ -49,15 +49,15 @@
         <div class="collapse navbar-collapse" id="navbar-collapse-5">
           <ul class="nav navbar-nav">
             <!-- <li><a href="admin_section.jsp">หน้าแรก</a></li> -->
-            <li><a href="setlist">ตั้งค่ารายการ</a></li>
+           
               <!-- ดอบดาว -->
             <!-- ดอบดาว -->
             <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">จัดการโค <b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><a href="admin_viewcowsh">โคประกวด</a></li>
-                <li><a href="admin_viewcow2">โคประมูล</a></li>
+                <li><a href="official_viewcowsh">โคประกวด</a></li>
+                <li><a href="official_viewcow2">โคประมูล</a></li>
                
                 </ul>
                 </li>
@@ -65,17 +65,18 @@
               <!-- ปิดดอบดาว -->  
            </ul>
              <ul class="nav navbar-nav">
-            <li><a href="festivity">งานโค</a></li>
+            <li><a href="work_official">งานโค</a></li>
            
-              <li><a href="user">สมาชิก</a></li>
-                <li><a href="report">ออกรายงาน</a></li>
+              
+                <li><a href="report_official">ออกรายงาน</a></li>
+                <li><a href="official_setlist">ตั้งค่ารายการ</a></li>
             </ul>
              <ul class="nav navbar-nav navbar-right">
               <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-5">
             <span class="sr-only">Toggle navigation</span>
           </button>
-         <a class="navbar-brand" href="edit_profile"><img src="<c:url value="resources/img/o1.png"/> "
+         <a class="navbar-brand" href=""><img src="<c:url value="resources/img/a1.png"/> "
 			height="40"></a>
         </div>
              <li ><a href="logout" class="fa fa-times">ออกจากระบบ</a></li>
@@ -84,6 +85,82 @@
            </div>
            </nav>
 </header>
-<center><h1>ยินดีต้อนรับ</h1></center>
+	
+	    <h1 align="center">ลงทะเบียนโคขุน</h1>
+	    <hr>
+	    
+	    
+		
+	  <div class="row demo-row">
+        <div class="col-xs-3"></div>
+        
+          <div class="col-xs-6">
+<div class="panel panel-primary">
+		<div class="panel-heading">
+	       <h4 class="panel-title" style="font-size: 25px;">ข้อมูลโคขุน</h4>
+	   	</div>
+		<div class="panel-body">
+		 
+		
+            
+           <div class="row form-group">
+							<div class="col-md-offset-1 col-md-2">
+								<h4>จำนวนโค :</h4>
+							</div>
+							<div class="col-md-7">
+								<input type="text" id="tel" class="form-control" placeholder="จำนวนโค" required/>
+							</div>
+						</div>
+						
+			 <div class="row form-group">
+							<div class="col-md-offset-1 col-md-2">
+								<h4>สายพันธุ์ :</h4>
+							</div>
+							<div class="col-md-7">
+				<select class="form-control" name="gene" id="gene" value=""  required>
+                <option></option>
+                <option>วากิว</option>
+                <option>กำแพงแสน</option>
+               
+           		</select>    
+							</div>
+						</div>
+									
+			<div class="row form-group">
+							<div class="col-md-offset-1 col-md-2">
+								<h4>รูปโค :</h4>
+							</div>
+							<div class="col-md-7">
+								<input type="file" id="tel" class="form-control" placeholder="อายุโค" required/>
+							</div>
+						</div>
+			
+										
+						<button type="submit" name="submit" id="submit" class="btn btn-success pull-left">ลงทะเบียน</button>  |
+						<a href="official_viewcow3"><button type="button" class="btn btn-danger fui-plus-circle">ย้อนกลับ</button></a>
+						
+                    
+            </div>
+            
+              </div>
+            </div>
+         </div>
+        
+         
+
+
+
+<footer class="footer">
+	<div class="container">
+		<p>
+			<font color="white">© 2014-2015</font>
+		</p>
+		<p class="text-muted">
+		
+		</p>
+	</div>
+	</footer>
+	
+  
 </body>
 </html>

@@ -1,17 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ include file="/WEB-INF/includes.jsp"%>
+<%@ include file="/WEB-INF/includes.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="">
-<meta name="author" content="">
-
-
-<title>ระบบออกใบสูจิบัตรโคประกวดและโคประมูล</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>แก้ไขโคประมูลโคขุน</title>
 
 <!-- Bootstrap -->
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"
@@ -28,8 +22,8 @@
 <script src="<c:url value="/resources/js/bootstrap.min.js"/>"></script>	
 
 </head>
-
 <body>
+
 <c:if test="${sessionScope.name == null }">
 	<c:redirect url="index"/>
 </c:if>
@@ -52,7 +46,7 @@
         <div class="collapse navbar-collapse" id="navbar-collapse-5">
          
              <ul class="nav navbar-nav">
-            <li><a href="cow_member">จัดการโค</a></li>
+            <li class="active"><a class="nav-link current" href="cow_member">จัดการโค</a></li>
             <li><a href="festivity_mem">งานโค</a></li>
                
             </ul>
@@ -71,12 +65,63 @@
            </div>
            </nav>
            </header>
-	
-	
-<div align="center"><h1>ยินดีต้อนรับ</h1></div>
+<h1 align="center">แก้ไขโคประมูลโคขุน</h1>
+<hr>
 
-
- 
-
+<div class="row demo-row">
+        <div class="col-xs-3"></div>
+        
+          <div class="col-xs-6">
+<div class="panel panel-primary">
+		<div class="panel-heading">
+	       <h4 class="panel-title" style="font-size: 25px;">ข้อมูลโคขุน</h4>
+	   	</div>
+		<div class="panel-body">
+		 
+		
+            
+           <div class="row form-group">
+							<div class="col-md-offset-1 col-md-2">
+								<h4>จำนวนโค :</h4>
+							</div>
+							<div class="col-md-7">
+								<input type="text" id="tel" class="form-control" placeholder="จำนวนโค" required/>
+							</div>
+						</div>
+						
+			 <div class="row form-group">
+							<div class="col-md-offset-1 col-md-2">
+								<h4>สายพันธุ์ :</h4>
+							</div>
+							<div class="col-md-7">
+				<select class="form-control" name="gene" id="gene" value=""  required>
+                <option></option>
+                <option>วากิว</option>
+                <option>กำแพงแสน</option>
+               
+           		</select>    
+							</div>
+						</div>
+									
+			<div class="row form-group">
+							<div class="col-md-offset-1 col-md-2">
+								<h4>รูปโค :</h4>
+							</div>
+							<div class="col-md-7">
+								<input type="file" id="tel" class="form-control" placeholder="อายุโค" required/>
+							</div>
+						</div>
+			
+										
+						<button type="submit" name="submit" id="submit" class="btn btn-success pull-left">บันทึก</button>  |
+						<a href="cow_member"><button type="button" class="btn btn-danger fui-plus-circle">ย้อนกลับ</button></a>
+						
+                    
+            </div>
+            
+              </div>
+            </div>
+         </div>
+         
 </body>
 </html>

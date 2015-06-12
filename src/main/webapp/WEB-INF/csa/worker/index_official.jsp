@@ -1,17 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ include file="/WEB-INF/includes.jsp"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+  <%@ include file="/WEB-INF/includes.jsp"%>
+
 <html>
 <head>
 <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="">
-<meta name="author" content="">
-
-
-<title>ระบบออกใบสูจิบัตรโคประกวดและโคประมูล</title>
+<title>เจ้าหน้าที่</title>
+<meta name="viewport"
+	content="initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="smartaddon-verification"
+	content="936e8d43184bc47ef34e25e426c508fe">
 
 <!-- Bootstrap -->
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"
@@ -27,6 +25,8 @@
 <script src="<c:url value="/resources/js/jquery-2.1.3.min.js"/>"></script>
 <script src="<c:url value="/resources/js/bootstrap.min.js"/>"></script>	
 
+
+
 </head>
 
 <body>
@@ -38,7 +38,7 @@
 	class="navbar navbar-default navbar-fixed-top">
 <div class="container-fluid">
 	<div class="navbar-header">
-		<a class="navbar-brand" href="index_member"><img
+		<a class="navbar-brand" href="index_official"><img
 			src="<c:url value=  "resources/img/b1.png"/> "
 			height="40"></a>
 		<button type="button" class="navbar-toggle" data-toggle="collapse"
@@ -50,19 +50,36 @@
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="navbar-collapse-5">
-         
-             <ul class="nav navbar-nav">
-            <li><a href="cow_member">จัดการโค</a></li>
-            <li><a href="festivity_mem">งานโค</a></li>
+          <ul class="nav navbar-nav">
+            <!-- <li><a href="admin_section.jsp">หน้าแรก</a></li> -->
+           
+              <!-- ดอบดาว -->
+            <!-- ดอบดาว -->
+            <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">จัดการโค <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="official_viewcowsh">โคประกวด</a></li>
+                <li><a href="official_viewcow2">โคประมูล</a></li>
                
+                </ul>
+                </li>
+              </ul>
+              <!-- ปิดดอบดาว -->  
+           </ul>
+             <ul class="nav navbar-nav">
+            <li><a href="work_official">งานโค</a></li>
+           
+              
+                <li><a href="report_official">ออกรายงาน</a></li>
+                <li><a href="official_setlist">ตั้งค่ารายการ</a></li>
             </ul>
              <ul class="nav navbar-nav navbar-right">
-               <div class="navbar-header">
+              <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-5">
             <span class="sr-only">Toggle navigation</span>
           </button>
-         <a class="navbar-brand" href="edit_member.jsp"><img
-			src="<c:url value=  "resources/img/m1.png"/> "
+         <a class="navbar-brand" href=""><img src="<c:url value="resources/img/a1.png"/> "
 			height="40"></a>
         </div>
              <li ><a href="logout" class="fa fa-times">ออกจากระบบ</a></li>
@@ -70,13 +87,7 @@
            </div>
            </div>
            </nav>
-           </header>
-	
-	
-<div align="center"><h1>ยินดีต้อนรับ</h1></div>
-
-
- 
-
+</header>
+<center><h1>ยินดีต้อนรับ</h1></center>
 </body>
 </html>
