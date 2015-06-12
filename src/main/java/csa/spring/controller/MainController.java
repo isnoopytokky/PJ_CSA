@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+
 
 
 
@@ -236,76 +239,64 @@ public class MainController {
 	}
 	
 	@RequestMapping("/login")
-	public String login(HttpServletRequest request,@RequestParam("username") String username,@RequestParam("password") String password) {
-		password = md5.getMD5(password);
-		List userlist =memberService.login(username,password); 
+	public String login(HttpSession session,@RequestParam("username") String username,@RequestParam("password") String password) {
+		String link="index";
+		String newpass = md5.getMD5(password);
+		List userlist = memberService.login(username, newpass);
+		
 		int count = userlist.size();		 
-		 if (count>0){			 			 
-			 request.setAttribute("auth", username);
-			 
-			 Member user = (Member)userlist.get(0);
-			/* 
-			 * 1 ผู้ดูแลระบบ
-			 * 2 เจ้าหน้าที่
-			 * 3 สมาชิก
-			 * 4 ห้ามใช้งาน
-			 * 5 รออนุมัติ
-			 
-			 */
-			 if(user.getStatusNo().getStatusName().equals("ผู้ดูแลระบบ"))		 
-				 return "redirect:"+"index_admin";
-			 else if(user.getStatusNo().getStatusName().equals("เจ้าหน้าที่"))
-				 return "redirect:"+"index_officer";
-			 else if(user.getStatusNo().getStatusName().equals("สมาชิก"))	 
-				 return "redirect:"+"index_member";
-			 else if(user.getStatusNo().getStatusName().equals("ห้ามใช้งาน"))			 
-				 return "redirect:"+"index_member_inactive";
-			 else if(user.getStatusNo().getStatusName().equals("รออนุมัติ"))			 
-				 return "redirect:"+"index_member_pending";
-			 else
-				 return "redirect:"+"index";
-				 
-			 
-		 }
-		 return "redirect:"+"index";		 
+		 if (count>0)
+		 {
+			Member checklogin = (Member)userlist.get(0);
+			int auth = checklogin.getStatusNo().getIdstatusNo();
+			if(auth==1){
+				link="index_admin";
+				session.setAttribute("status", checklogin.getStatusNo());
+				session.setAttribute("name", checklogin.getName());
+			}
+			if(auth==2){
+				link="index_official";
+				session.setAttribute("status", checklogin.getStatusNo());
+				session.setAttribute("name", checklogin.getName());
+			}
+			if(auth==3){
+				link="index_member";
+				session.setAttribute("status", checklogin.getStatusNo());
+				session.setAttribute("name", checklogin.getName());
+			}
+			if(auth==4){
+				link="ban";
+				session.setAttribute("status", checklogin.getStatusNo());
+				session.setAttribute("name", checklogin.getName());
+			}
+			if(auth==5){
+				link="pending";
+				session.setAttribute("status", checklogin.getStatusNo());
+				session.setAttribute("name", checklogin.getName());
+			}
+			
+		}
+		
+		 return "redirect:"+link;	
+		
+		
+		 	 
 	}
-	//@ResponseBody
-//	@RequestMapping(value="login")
-//	public String login(HttpServletRequest request,@RequestParam("username") String username,@RequestParam("password") String password) {
-//		 //int n=memberService.login(username,md5.getMD5(password)).size();
-//		int n=memberService.login(username,password).size();
-//		 String message="no";
-//		 if (n>0){
-//			 message="yes";
-//			 request.setAttribute("auth", username);
-//		 }
-//		 //return message;
-//		 return "redirect:festivity";
-//	}
 	
 	@RequestMapping("/index_admin")
 	public ModelAndView index_admin(){
 		ModelAndView model = new ModelAndView("/csa/admin/index_admin");
 		return model;
 	}
-	@RequestMapping("/index_officer")
-	public ModelAndView index_officer(){
-		ModelAndView model = new ModelAndView("/csa/officer/index_officer");
+	
+	@RequestMapping("/ban")
+	public ModelAndView ban(){
+		ModelAndView model = new ModelAndView("ban");
 		return model;
 	}
-	@RequestMapping("/index_member")
-	public ModelAndView index_member(){
-		ModelAndView model = new ModelAndView("/csa/member/index_member");
-		return model;
-	}
-	@RequestMapping("/index_member_inactive")
-	public ModelAndView index_member_inactive(){
-		ModelAndView model = new ModelAndView("/csa/member_inactive/index_member_inactive");
-		return model;
-	}
-	@RequestMapping("/index_member_pending")
-	public ModelAndView index_member_pending(){
-		ModelAndView model = new ModelAndView("/csa/member_pending/index_member_pending");
+	@RequestMapping("/pending")
+	public ModelAndView pending(){
+		ModelAndView model = new ModelAndView("pending");
 		return model;
 	}
 	

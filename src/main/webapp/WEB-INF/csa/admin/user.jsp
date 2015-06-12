@@ -263,7 +263,7 @@
 							</div>
 							<div class="col-md-6">
 								<input type="password" name="password2" id="password2" class="form-control"/>
-								<input type="text" id="password-old" class="form-control"/>
+								<input type="text" id="password-old" class="form-control hide"/>
 							</div>
 						</div>
 						<div class="row form-group">
@@ -597,7 +597,7 @@
 					data:$("#member").serialize() + '&flg=' + flg
 				}).done(function(a){
 					debugger;
-					alert("แก้ไขเรียบร้อย"+a);
+					alert("แก้ไขเรียบร้อย");
 					window.location.reload();
 				});
        		}

@@ -79,18 +79,13 @@ public class UserController {
 	
 	@RequestMapping(value="/api/updateUser",method=RequestMethod.POST)
 	@ResponseBody
-	public String updateUser(@ModelAttribute Member member) {		
-		String newpass = md5.getMD5(member.getPass());		
-		member.setPass(newpass);
+	public String updateUser(@ModelAttribute Member member,@RequestParam("flg") String flg) {		
 		
-		//if pass is empty get current pass 
-		if(member.getPass().equals(""))
+		if(flg.equals("new"))
 		{
-			Member member_old = new Member();
-			member_old = memberService.getMember(member.getId());
-			member.setPass(member_old.getPass());  
-		}
-				
+			String newpass = md5.getMD5(member.getPass());
+			member.setPass(newpass);
+		}				
 		memberService.edit(member);			
 		return "success";
 	}
