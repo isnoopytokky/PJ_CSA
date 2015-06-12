@@ -85,7 +85,7 @@
            </nav>
 </header>
 	
-	    <h1 align="center">จัดงานโค </h1>
+	    <h1 align="center">ลงทะเบียนโคพันธุ์ </h1>
 	    <hr>
 	    
 	    
@@ -96,7 +96,7 @@
           <div class="col-xs-6">
 <div class="panel panel-primary">
 		<div class="panel-heading">
-	       <h4 class="panel-title" style="font-size: 25px;">เพิ่มงานโค</h4>
+	       <h4 class="panel-title" style="font-size: 25px;">ข้อมูลโคพันธุ์</h4>
 	   	</div>
 		<div class="panel-body">
 		 
@@ -104,27 +104,40 @@
             
            <div class="row form-group">
 							<div class="col-md-offset-1 col-md-2">
-								<h4>ประเภทงาน :</h4>
+								<h4>ชื่อโค :</h4>
 							</div>
 							<div class="col-md-7">
-				<select class="form-control" name="gene" id="gene" value=""  required>
-                <option></option>
-                <option>ประกวดโค</option>
-                <option>ประมูลโคพันธุ์</option>
-                <option>ประมูลโคขุน</option>
-           		</select>    
+								<input type="text" id="tel" class="form-control" placeholder="ชื่อโค" required/>
 							</div>
 						</div>
 						
 			 <div class="row form-group">
 							<div class="col-md-offset-1 col-md-2">
-								<h4>ชื่องาน :</h4>
+								<h4>หมายเลขโค :</h4>
 							</div>
 							<div class="col-md-7">
-								<input type="tel" id="tel" class="form-control" placeholder="ชื่องาน" required/>
+								<input type="text" id="tel" class="form-control" placeholder="หมายเลขโค" required/>
+							</div>
+						</div>
+						
+			 <div class="row form-group">
+							<div class="col-md-offset-1 col-md-2">
+								<h4>วันเกิดโค :</h4>
+							</div>
+							<div class="col-md-7">
+								<input type="date" id="tel" class="form-control" placeholder="ชื่องาน" required/>
 							</div>
 						</div>
 			
+			<div class="row form-group">
+							<div class="col-md-offset-1 col-md-2">
+								<h4>อายุโค :</h4>
+							</div>
+							<div class="col-md-7">
+								<input type="text" id="tel" class="form-control" placeholder="อายุโค" required/>
+							</div>
+						</div>
+						
 			 <div class="row form-group">
 							<div class="col-md-offset-1 col-md-2">
 								<h4>สายพันธุ์ :</h4>
@@ -132,92 +145,81 @@
 							<div class="col-md-7">
 				<select class="form-control" name="gene" id="gene" value=""  required>
                 <option></option>
-                <option>Hydrogen</option>
-                <option>Helium</option>
-                <option>Lithium</option>
-                <option>Beryllium</option>
-                <option>Boron</option>
-                <option>Carbon</option>
-                <option>Nitrogen</option>
+                <option>วากิว</option>
+                <option>กำแพงแสน</option>
+               
            		</select>    
 							</div>
 						</div>
 			
-			 <div class="row form-group">
+			<div class="row form-group">
 							<div class="col-md-offset-1 col-md-2">
-								<h4>วันเริ่มงาน :</h4>
+								<h4>สี :</h4>
 							</div>
 							<div class="col-md-7">
-								<input type="date" id="tel" class="form-control" />
+				<select class="form-control" name="gene" id="gene" value=""  required>
+                <option></option>
+                <option>ขาว</option>
+                <option>ดำ</option>
+               
+           		</select>    
+							</div>
+						</div>
+						
+			<div class="row form-group">
+							<div class="col-md-offset-1 col-md-2">
+								<h4>เพศ :</h4>
+							</div>
+							<div class="col-md-7">
+				<select class="form-control" name="gene" id="gene" value=""  required>
+                <option></option>
+                <option>ผู้</option>
+                <option>เมีย</option>
+               
+           		</select>    
+							</div>
+						</div>
+									
+			<div class="row form-group">
+							<div class="col-md-offset-1 col-md-2">
+								<h4>รูปโค :</h4>
+							</div>
+							<div class="col-md-7">
+								<input type="file" id="tel" class="form-control" placeholder="อายุโค" required/>
 							</div>
 						</div>
 			
 			<div class="row form-group">
 							<div class="col-md-offset-1 col-md-2">
-								<h4>วันสิ้นสุดงาน :</h4>
+								<h4>ใบพันธุ์ประวัติ :</h4>
 							</div>
 							<div class="col-md-7">
-								<input type="date" id="tel" class="form-control" />
+								<input type="file" id="tel" class="form-control" placeholder="อายุโค" required/>
 							</div>
 						</div>
 			
 			<div class="row form-group">
 							<div class="col-md-offset-1 col-md-2">
-								<h4>เริ่มรับข้อมูล :</h4>
+								<h4>ชื่อพ่อโค :</h4>
 							</div>
 							<div class="col-md-7">
-								<input type="date" id="tel" class="form-control" />
-							</div>
-						</div>
-						
-			<div class="row form-group">
-							<div class="col-md-offset-1 col-md-2">
-								<h4>สิ้นสุดรับข้อมูล :</h4>
-							</div>
-							<div class="col-md-7">
-								<input type="date" id="tel" class="form-control" />
+								<input type="text" id="tel" class="form-control" placeholder="ชื่อพ่อโค" required/>
 							</div>
 						</div>
 			
 			<div class="row form-group">
 							<div class="col-md-offset-1 col-md-2">
-								<h4>โลโก้งาน :</h4>
+								<h4>ชื่อแม่โค :</h4>
 							</div>
 							<div class="col-md-7">
-								<input type="file" id="tel" class="form-control" />
+								<input type="text" id="tel" class="form-control" placeholder="ชื่อแม่โค" required/>
 							</div>
 						</div>
-						
-			<div class="row form-group">
-							<div class="col-md-offset-1 col-md-2">
-								<h4>โปสเตอร์งาน :</h4>
-							</div>
-							<div class="col-md-7">
-								<input type="file" id="tel" class="form-control" />
-							</div>
-						</div>
-						
-			<div class="row form-group">
-							<div class="col-md-offset-1 col-md-2">
-								<h4>รายละเอียดงาน :</h4>
-							</div>
-							<div class="col-md-7">
-								<textarea id="tel" class="form-control" required />
-								</textarea>
-							</div>
-						</div>
-						
-			 <div class="row form-group">
-							<div class="col-md-offset-1 col-md-2">
-								<h4>ติดต่อสอบถาม :</h4>
-							</div>
-							<div class="col-md-7">
-								<input type="tel" id="tel" class="form-control" placeholder="ติดต่อสอบถาม" required/>
-							</div>
-						</div>
-						
-						<button type="submit" name="submit" id="submit" class="btn btn-success pull-left">จัดงาน</button>  |
-						<a href="work"><button type="button" class="btn btn-danger fui-plus-circle">ย้อนกลับ</button></a>
+			
+			
+															
+						<button type="submit" name="submit" id="submit" class="btn btn-success pull-left">ลงทะเบียน</button>  |
+						<a href="admin_viewcow2"><button type="button" class="btn btn-danger fui-plus-circle">ย้อนกลับ</button></a>
 						
                     
             </div>

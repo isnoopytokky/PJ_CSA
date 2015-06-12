@@ -49,7 +49,7 @@
         <div class="collapse navbar-collapse" id="navbar-collapse-5">
           <ul class="nav navbar-nav">
             <!-- <li><a href="admin_section.jsp">หน้าแรก</a></li> -->
-            <li><a href="#">ตั้งค่ารายการ</a></li>
+            <li><a href="setlist">ตั้งค่ารายการ</a></li>
               <!-- ดอบดาว -->
             <!-- ดอบดาว -->
             <ul class="nav navbar-nav navbar-right">
@@ -75,8 +75,7 @@
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-5">
             <span class="sr-only">Toggle navigation</span>
           </button>
-         <a class="navbar-brand" href="edit_profile"><img
-			src="<c:url value=  "resources/img/o1.png"/> "
+         <a class="navbar-brand" href="edit_profile"><img src="<c:url value="resources/img/o1.png"/> "
 			height="40"></a>
         </div>
              <li ><a href="logout" class="fa fa-times">ออกจากระบบ</a></li>
@@ -85,53 +84,75 @@
            </div>
            </nav>
 </header>
-			<h1><center>ข้อมูลส่วนตัว</center></h1>
-		<hr>
-			<div class="row demo-row">
+	
+	    <h1 align="center">ลงทะเบียนโคขุน</h1>
+	    <hr>
+	    
+	    
+		
+	  <div class="row demo-row">
         <div class="col-xs-3"></div>
         
           <div class="col-xs-6">
-		<div class="panel panel-primary">
-	<div class="panel-heading">
-        <h4 class="panel-title" style="font-size: 18px;">แก้ไขข้อมูลส่วนตัว</h4>
-   	</div> 
+<div class="panel panel-primary">
+		<div class="panel-heading">
+	       <h4 class="panel-title" style="font-size: 25px;">ข้อมูลโคขุน</h4>
+	   	</div>
+		<div class="panel-body">
+		 
+		
+            
+           <div class="row form-group">
+							<div class="col-md-offset-1 col-md-2">
+								<h4>จำนวนโค :</h4>
+							</div>
+							<div class="col-md-7">
+								<input type="text" id="tel" class="form-control" placeholder="จำนวนโค" required/>
+							</div>
+						</div>
+						
+			 <div class="row form-group">
+							<div class="col-md-offset-1 col-md-2">
+								<h4>สายพันธุ์ :</h4>
+							</div>
+							<div class="col-md-7">
+				<select class="form-control" name="gene" id="gene" value=""  required>
+                <option></option>
+                <option>วากิว</option>
+                <option>กำแพงแสน</option>
+               
+           		</select>    
+							</div>
+						</div>
+									
+			<div class="row form-group">
+							<div class="col-md-offset-1 col-md-2">
+								<h4>รูปโค :</h4>
+							</div>
+							<div class="col-md-7">
+								<input type="file" id="tel" class="form-control" placeholder="อายุโค" required/>
+							</div>
+						</div>
 			
-			<form action='' method='post'>
-			<c:forEach items="${adminlist }" var="user">
-			<table cellpadding=2 cellspacing=1 width='300' align=center>
-			<tr id=color1><td colspan=2 align=center><br></td></tr>
+										
+						<button type="submit" name="submit" id="submit" class="btn btn-success pull-left">ลงทะเบียน</button>  |
+						<a href="admin_viewcow3"><button type="button" class="btn btn-danger fui-plus-circle">ย้อนกลับ</button></a>
+						
+                    
+            </div>
+            
+              </div>
+            </div>
+         </div>
+        
+         
 
-			<tr id=color2><td>อีเมล</td>
-			<td><input type='text' class='form-control' name='email' size=30 value="${user.email }"></td></tr>
-			<tr id=color2><td>ชื่อ</td>
-			<td><input type='text' class='form-control' name='name' size=30 value='${user.name }'></td></tr>
-			<tr id=color2><td>นามสกุล</td>
-			<td><input type='text' class='form-control' name='sername' size=30 value='${user.surname }'></td></tr>
-			<tr id=color2><td>ที่อยู่</td>
-			<td><input type='text' class='form-control' name='address' size=30 value='${user.address }'></td></tr>
-			<tr id=color2><td>ชื่อฟาร์ม</td>
-			<td><input type='text' class='form-control' name='farm' size=30 value='${user.farm }'></td></tr>
-			<tr id=color2><td >เบอร์โทร</td>
-			<td><input type='text' class='form-control' name='tel' size=30 value='${user.tel }'></td></tr>
-			<tr id=color2><td >สถานะ</td>
-			<td><input type='text' class='form-control' name='statusNo' size=30 value=''></td></tr>
-			
-			<tr id=color2><td colspan=2 align=center>
-			<input type='submit' name='submit' value='submit' class='btn btn-primary'></td></tr>
-			
-			</table>
-		</c:forEach>
-			<br>
-			</form>
-			
-			</div>
-			</div>
-			</div>
-	
-	<footer class="footer">
+
+
+<footer class="footer">
 	<div class="container">
 		<p>
-			<font color="white">© 2014-2015 </font>
+			<font color="white">© 2014-2015</font>
 		</p>
 		<p class="text-muted">
 		
@@ -139,8 +160,6 @@
 	</div>
 	</footer>
 	
-	
-	
- 
-    </body>
+  
+</body>
 </html>

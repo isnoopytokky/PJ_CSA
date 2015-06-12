@@ -64,7 +64,7 @@
               <!-- ปิดดอบดาว -->  
            </ul>
              <ul class="nav navbar-nav">
-            <li><a href="festivity">งานโค</a></li>
+            <li><a href="work">งานโค</a></li>
               <li><a href="user">สมาชิก</a></li>
                <li><a href="#">ออกรายงาน</a></li>
             </ul>
@@ -90,9 +90,11 @@
 	        <h4 class="panel-title" style="font-size: 25px;">รายชื่อโคประมูลโคพันธุ์</h4>
 	   	</div>
 		<div class="panel-body">
+			<div>
+			<a href="admin_addcow2"><button type="button" class="btn btn-success fui-plus-circle"> เพิ่มโคพันธุ์</button></a> |
+		  	<a href="admin_viewcow3"><button type="button" class="btn btn-danger fui-plus-circle"> รายชื่อโคขุน</button></a>
+			</div><br>
 		  	<table class="table table-striped table-hover  table-bordered">
-		  	<button type="button" class="btn btn-success fui-plus-circle"><a href="admin_addcow2"><font color="white"> เพิ่มโคพันธุ์</font></a></button> |
-		  	<button type="button" class="btn btn-danger fui-plus-circle"><a href="admin_viewcow3"><font color="white"> รายชื่อโคขุน</font></a></button>
 				<thead>
 					<tr>
 						<th><center>ลำดับที่</center></th>
@@ -102,7 +104,6 @@
 				        <th><center>เพศ</center></th>
 				        <th><center>แก้ไข</center></th>
 				        <th><center>ลบ</center></th>
-				        <th><center>รายละเอียด</center></th>
 				      </tr>
 				    </thead>
 				    <tbody>
@@ -113,24 +114,16 @@
 				    <td><div align="center"></div></td>
 				    <td><div align="center"></div></td>
 				    <td><div align="center"></div></td>
-				        <td><center><a href="#?CusID="><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit">
+				        <td><center><a href="edit_cow2"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit">
 				        	<span class="glyphicon glyphicon-pencil"></span></button></a></center></td>
 				        
 				        <td><center><a href="#?CusID="><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete">
 				        	<span class="glyphicon glyphicon-remove"></span></button></a></center></td>
 				        
-				        <td><center><a href="viewcow2.jsp?CusID="  data-toggle="modal"
-				data-target="#log"><button type="button" class="btn btn-success">
-				        	<span class="glyphicon glyphicon-list"></span></button></a></center></td>
 				      </tr>
 
 				</tbody>
 			</table>
-		    <div class="row">
-		        <div class="col-md-offset-10"><p>
-		        	<button type="button" class="btn btn-success glyphicon glyphicon-print"> พิมพ์ใบเสร็จทั้งหมด</button>
-		        </p></div>        
-		   	</div>
 		</div>
 	</div>
 </div> <!-- end container -->

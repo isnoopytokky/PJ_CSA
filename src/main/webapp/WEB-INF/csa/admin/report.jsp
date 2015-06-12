@@ -63,9 +63,9 @@
               <!-- ปิดดอบดาว -->  
            </ul>
              <ul class="nav navbar-nav">
-            <li><a href="festivity">งานโค</a></li>
+            <li><a href="work">งานโค</a></li>
               <li><a href="user">สมาชิก</a></li>
-               <li><a href="report">ออกรายงาน</a></li>
+               <li class="active"><a class="nav-link current" href="report">ออกรายงาน</a></li>
             </ul>
              <ul class="nav navbar-nav navbar-right">
                <div class="navbar-header">

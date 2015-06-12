@@ -263,6 +263,7 @@
 							</div>
 							<div class="col-md-6">
 								<input type="password" name="password2" id="password2" class="form-control"/>
+								<input type="text" id="password-old" class="form-control"/>
 							</div>
 						</div>
 						<div class="row form-group">
@@ -492,8 +493,13 @@
 	        	//data.statusNoName
 	        	$("#"+ compName +"statusNo").val(data.statusNoName);	 
 	        	
+	        	
 	        	if(compName == '')
+        		{
 	        		$("#idstatusNo").val(data.statusNoId);
+	        		$("#password-old").val(data.user.pass);
+	        	
+        		}
 	        });
 		}
 		
@@ -530,7 +536,8 @@
         $( "#btn_delete" ).click(function() {
         	deleteUser('/PJ_CSA/api/deleteUser', {'id': $("#delete-id").val()}, 'modal-delete');
        	});
-        $( "#btn_save" ).click(function() {    
+        $( "#btn_save" ).click(function() { 
+        	var flg = 'new';
         	var user = $("#user").val();
         	var pass = $("#password").val();
         	var pass2 = $("#password2").val();
@@ -550,6 +557,11 @@
 	        	if (pass!=pass2){
 	        		msg+="รหัสไม่ตรงกัน\n";
 	        	}
+        	}
+        	else
+       		{
+        		$("#password").val($("#password-old").val());
+        		flg = 'old';        		
         	}
         	if (email=="" ||email.indexOf('@') == -1 || email.indexOf('.') == -1){
         		error = 1;
@@ -582,9 +594,10 @@
 					url:"/PJ_CSA/api/updateUser",
 					encoding:"UTF-8",
 					method:"POST",
-					data:$("#member").serialize()
+					data:$("#member").serialize() + '&flg=' + flg
 				}).done(function(a){
-					alert("แก้ไขเรียบร้อย");
+					debugger;
+					alert("แก้ไขเรียบร้อย"+a);
 					window.location.reload();
 				});
        		}

@@ -65,7 +65,7 @@
               <!-- ปิดดอบดาว -->  
            </ul>
              <ul class="nav navbar-nav">
-            <li><a href="festivity">งานโค</a></li>
+            <li><a href="work">งานโค</a></li>
            
               <li><a href="user">สมาชิก</a></li>
                 <li><a href="report">ออกรายงาน</a></li>
@@ -105,14 +105,210 @@
               </ul>
               <div id="myTabContent" class="tab-content">
                 <div class="tab-pane fade active in" id="home1">
-                  <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica.</p>
-                </div>
+                
+                 <div class="example">
+      
+        			<div class="row">
+          			<div class="col-md-6">
+            		<div class="panel panel-Primary">
+              		<div class="panel-heading">
+               		<h3 class="panel-title">เพิ่มสี</h3>
+              		</div>
+              		<table class="table table-striped table-hover  table-bordered">
+				    <tbody>
+				      <tr>
+				    <td><div align="center"><div class="row form-group">
+							<div class="col-md-offset-1 col-md-2">
+								<h4>สี :</h4>
+							</div>
+							<div class="col-md-7">
+								<input type="tel" id="tel" class="form-control" placeholder="สี" required/>
+							</div>
+						</div></div></td>
+				   
+				       
+				        <td><div align="center"><a href="#"  data-toggle="modal"
+				data-target="#log"><button type="button" class="btn btn-success">
+				        	<span class="glyphicon glyphicon-floppy-saved"></span></button></a></div></td>
+				      </tr>
+				</tbody>
+			</table>
+              
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="panel panel-Primary">
+              <div class="panel-heading">
+                <h3 class="panel-title">สีที่มีอยู่</h3>
+              </div>
+              <table class="table table-striped table-hover  table-bordered">
+		  
+				<thead>
+					<tr>
+						
+				    	<th align="center">สี</th>
+				        <th align="center">ลบ</th>
+				      </tr>
+				    </thead>
+				    <tbody>
+				   
+				      <tr>
+				   
+				    <td><div align="center">แดง</div></td>
+				        <td><div align="center"><a href="#"  data-toggle="modal"
+				data-target="#log"><button type="button" class="btn btn-danger">
+				        	<span class="glyphicon glyphicon-floppy-remove"></span></button></a></div></td>
+				      </tr>
+
+						</tbody>
+						</table>
+            			</div>
+          				</div>
+        				</div>
+      					</div>
+      			</div>
+                
                 <div class="tab-pane fade" id="profile1">
-                  <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee.  </p>
+                  
+                  <div class="example">
+      
+        			<div class="row">
+          			<div class="col-md-6">
+            		<div class="panel panel-Primary">
+              		<div class="panel-heading">
+               		<h3 class="panel-title">เพิ่มสายพันธุ์</h3>
+              		</div>
+              		<table class="table table-striped table-hover  table-bordered">
+				    <tbody>
+				      <tr>
+				    <td><div align="center"><div class="row form-group">
+							<div class="col-md-offset-1 col-md-2">
+								<h4>สายพันธุ์ :</h4>
+							</div>
+							<div class="col-md-7">
+								<input type="tel" id="tel" class="form-control" placeholder="สายพันธุ์" required/>
+							</div>
+						</div></div></td>
+				   
+				       
+				        <td><div align="center"><a href="#"  data-toggle="modal"
+				data-target="#log"><button type="button" class="btn btn-success">
+				        	<span class="glyphicon glyphicon-floppy-saved"></span></button></a></div></td>
+				      </tr>
+				</tbody>
+			</table>
+              
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="panel panel-Primary">
+              <div class="panel-heading">
+                <h3 class="panel-title">สายพันธุ์ที่มีอยู่</h3>
+              </div>
+              <table class="table table-striped table-hover  table-bordered">
+		  
+				<thead>
+					<tr>
+						
+				    	<th align="center">สายพันธุ์</th>
+				        <th align="center">ลบ</th>
+				      </tr>
+				    </thead>
+				    <tbody>
+				   
+				      <tr>
+				   
+				    <td><div align="center">วากิว</div></td>
+				        <td><div align="center"><a href="#"  data-toggle="modal"
+				data-target="#log"><button type="button" class="btn btn-danger">
+				        	<span class="glyphicon glyphicon-floppy-remove"></span></button></a></div></td>
+				      </tr>
+
+						</tbody>
+						</table>
+            			</div>
+          				</div>
+        				</div>
+      					</div>
+                  
                 </div>
-                 <div class="tab-pane fade" id="profile2">
-                  <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee.  </p>
+                
+                
+                <div class="tab-pane fade" id="profile2">
+                  
+                  <div class="example">
+      
+        			<div class="row">
+          			<div class="col-md-6">
+            		<div class="panel panel-Primary">
+              		<div class="panel-heading">
+               		<h3 class="panel-title">เลือกแบบฟอร์ม</h3>
+              		</div>
+              		<table class="table table-striped table-hover  table-bordered">
+				    <tbody>
+				      <tr>
+				    <td><div align="center"><div class="row form-group">
+							<div class="col-md-offset-1 col-md-2">
+								<h4>ฟอร์ม:</h4>
+							</div>
+							
+						<div class="col-md-7">
+				<select class="form-control" name="" id="" value=""  required>
+                <option></option>
+                <option>แบบที่1</option>
+                <option>แบบที่2</option>
+                <option>แบบที่3</option>
+                <option>แบบที่4</option>
+                <option>แบบที่5</option>
+           		</select>    
+						</div>
+						</div>
+						</div>
+						</td>
+				   
+				       
+				        <td><div align="center"><a href="#"  data-toggle="modal"
+				data-target="#log"><button type="button" class="btn btn-success">
+				        	<span class="glyphicon glyphicon-cog"></span></button></a></div></td>
+				      </tr>
+				</tbody>
+			</table>
+              
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="panel panel-Primary">
+              <div class="panel-heading">
+                <h3 class="panel-title">แบบฟอร์ม</h3>
+              </div>
+              <table class="table table-striped table-hover  table-bordered">
+		  
+				<thead>
+					<tr>
+						
+				    	<th align="center">แบบฟอร์ม</th>
+				        <th align="center">แก้ไข</th>
+				      </tr>
+				    </thead>
+				    <tbody>
+				   
+				      <tr>
+				   
+				    <td><div align="center">แบบที่ 1</div></td>
+				        <td><div align="center"><a href="#"  data-toggle="modal"
+				data-target="#log"><button type="button" class="btn btn-danger">
+				        	<span class="glyphicon glyphicon-floppy-remove"></span></button></a></div></td>
+				      </tr>
+
+						</tbody>
+						</table>
+            			</div>
+          				</div>
+        				</div>
+      					</div>
+                  
                 </div>
+                 
                
               </div>
             </div>

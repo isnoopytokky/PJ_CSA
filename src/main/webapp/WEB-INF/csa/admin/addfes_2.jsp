@@ -93,7 +93,7 @@
            </div>
            </nav>
 </header>
-<div align="center"><h1>นำโคร่วมงานประกวด</h1></div>
+<div align="center"><h1>นำโคร่วมประมูลพันธุ์</h1></div>
 <hr>
 
 <div class="example">
@@ -109,11 +109,11 @@
 				<thead>
 					<tr>
 						
-				    	<th><center>ชื่อโค</center></th>
-				        <th><center>อายุโค</center></th>
-				        <th><center>สายพันธุ์</center></th>
-				        <th><center>เพศ</center></th>
-				        <th><center>นำเข้า</center></th>
+				    	<th align="center">ชื่อโค</th>
+				        <th align="center">อายุโค</th>
+				        <th align="center">สายพันธุ์</th>
+				        <th align="center">เพศ</th>
+				        <th align="center">นำเข้า</th>
 				      </tr>
 				    </thead>
 				    <tbody>
@@ -146,11 +146,12 @@
 				<thead>
 					<tr>
 						
-				    	<th><center>ชื่อโค</center></th>
-				        <th><center>อายุโค</center></th>
-				        <th><center>สายพันธุ์</center></th>
-				        <th><center>เพศ</center></th>
-				        <th><center>นำออก</center></th>
+				    	<th align="center">ชื่อโค</th>
+				        <th align="center">อายุโค</th>
+				        <th align="center">สายพันธุ์</th>
+				        <th align="center">เพศ</th>
+				        <th align="center">เพิ่มข้อมูล</th>
+				        <th align="center">นำออก</th>
 				      </tr>
 				    </thead>
 				    <tbody>
@@ -162,7 +163,9 @@
 				    <td><div align="center"></div></td>
 				   
 				       
-				        
+				        <td><div align="center"><a href="#"  data-toggle="modal"
+				data-target="#log"><button type="button" class="btn btn-success">
+				        	<span class="glyphicon glyphicon-plus-sign"></span></button></a></div></td>
 				        <td><div align="center"><a href="#"  data-toggle="modal"
 				data-target="#log"><button type="button" class="btn btn-success">
 				        	<span class="glyphicon glyphicon-log-out"></span></button></a></div></td>
@@ -182,8 +185,55 @@
       
       <div align="center">
       				<a href="work"><button type="button" class="btn btn-danger glyphicon glyphicon-arrow-left"> </button></a>
-		        	<button type="button" class="btn btn-success glyphicon glyphicon-print"> พิมพ์ใบสูจิบัตรเพศผู้</button>
-		        	<button type="button" class="btn btn-success glyphicon glyphicon-print"> พิมพ์ใบสูจิบัตรเพศเมีย</button>
+		        	<button type="button" class="btn btn-success glyphicon glyphicon-print"> พิมพ์ใบสูจิบัตร</button>
+		        	
 		      </div> 
+		      
+	<div class="container">
+		<!-- modal -->
+		<div id="log" class="modal fade">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-hidden="true"></button>
+						<h3 class="modal-title">เพิ่มข้อมูลโค</h3>
+					</div>
+					<div class="modal-body">
+						<div class="row form-group">
+							<div class="col-md-offset-2 col-md-2">
+								<h4>ล็อตที่:</h4>
+							</div>
+							<div class="col-md-6">
+								<input type="text" class="form-control">
+							</div>
+						</div>
+						<div class="row form-group">
+							<div class="col-md-offset-2 col-md-2">
+								<h4>ราคาเริ่มต้น:</h4>
+							</div>
+							<div class="col-md-6">
+								<input type="text" class="form-control">
+							</div>
+						</div>
+						<div class="row form-group">
+							<div class="col-md-offset-2 col-md-2">
+								<h4>น้ำหนัก:</h4>
+							</div>
+							<div class="col-md-6">
+								<input type="password" class="form-control">
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">ปิด</button>
+						<a href="index_admin"><button type="button"
+								class="btn btn-primary">บันทึก</button></a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- modal -->
+	</div>
 </body>
 </html>

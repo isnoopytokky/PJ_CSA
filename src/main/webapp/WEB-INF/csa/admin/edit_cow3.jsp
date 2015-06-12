@@ -1,15 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-  <%@ include file="/WEB-INF/includes.jsp"%>
-
+<%@ include file="/WEB-INF/includes.jsp"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta charset="utf-8">
-<title>แอดมิน</title>
-<meta name="viewport"
-	content="initial-scale=1,maximum-scale=1,user-scalable=no">
-<meta name="smartaddon-verification"
-	content="936e8d43184bc47ef34e25e426c508fe">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>แก้ไขโคประมูลโคขุน</title>
 
 <!-- Bootstrap -->
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"
@@ -25,11 +21,12 @@
 <script src="<c:url value="/resources/js/jquery-2.1.3.min.js"/>"></script>
 <script src="<c:url value="/resources/js/bootstrap.min.js"/>"></script>	
 
-
-
 </head>
-
 <body>
+
+<c:if test="${sessionScope.name == null }">
+	<c:redirect url="index"/>
+</c:if>
 
 	<header class="header"> <nav
 	class="navbar navbar-default navbar-fixed-top">
@@ -49,7 +46,7 @@
         <div class="collapse navbar-collapse" id="navbar-collapse-5">
           <ul class="nav navbar-nav">
             <!-- <li><a href="admin_section.jsp">หน้าแรก</a></li> -->
-            <li><a href="#">ตั้งค่ารายการ</a></li>
+            <li><a href="setlist">ตั้งค่ารายการ</a></li>
               <!-- ดอบดาว -->
             <!-- ดอบดาว -->
             <ul class="nav navbar-nav navbar-right">
@@ -68,15 +65,14 @@
             <li><a href="work">งานโค</a></li>
            
               <li><a href="user">สมาชิก</a></li>
-                <li><a href="#">ออกรายงาน</a></li>
+                <li><a href="report">ออกรายงาน</a></li>
             </ul>
              <ul class="nav navbar-nav navbar-right">
               <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-5">
             <span class="sr-only">Toggle navigation</span>
           </button>
-         <a class="navbar-brand" href="edit_profile"><img
-			src="<c:url value=  "resources/img/o1.png"/> "
+         <a class="navbar-brand" href="edit_profile"><img src="<c:url value="resources/img/o1.png"/> "
 			height="40"></a>
         </div>
              <li ><a href="logout" class="fa fa-times">ออกจากระบบ</a></li>
@@ -85,62 +81,63 @@
            </div>
            </nav>
 </header>
-			<h1><center>ข้อมูลส่วนตัว</center></h1>
-		<hr>
-			<div class="row demo-row">
+<h1 align="center">แก้ไขโคประมูลโคขุน</h1>
+<hr>
+
+<div class="row demo-row">
         <div class="col-xs-3"></div>
         
           <div class="col-xs-6">
-		<div class="panel panel-primary">
-	<div class="panel-heading">
-        <h4 class="panel-title" style="font-size: 18px;">แก้ไขข้อมูลส่วนตัว</h4>
-   	</div> 
-			
-			<form action='' method='post'>
-			<c:forEach items="${adminlist }" var="user">
-			<table cellpadding=2 cellspacing=1 width='300' align=center>
-			<tr id=color1><td colspan=2 align=center><br></td></tr>
-
-			<tr id=color2><td>อีเมล</td>
-			<td><input type='text' class='form-control' name='email' size=30 value="${user.email }"></td></tr>
-			<tr id=color2><td>ชื่อ</td>
-			<td><input type='text' class='form-control' name='name' size=30 value='${user.name }'></td></tr>
-			<tr id=color2><td>นามสกุล</td>
-			<td><input type='text' class='form-control' name='sername' size=30 value='${user.surname }'></td></tr>
-			<tr id=color2><td>ที่อยู่</td>
-			<td><input type='text' class='form-control' name='address' size=30 value='${user.address }'></td></tr>
-			<tr id=color2><td>ชื่อฟาร์ม</td>
-			<td><input type='text' class='form-control' name='farm' size=30 value='${user.farm }'></td></tr>
-			<tr id=color2><td >เบอร์โทร</td>
-			<td><input type='text' class='form-control' name='tel' size=30 value='${user.tel }'></td></tr>
-			<tr id=color2><td >สถานะ</td>
-			<td><input type='text' class='form-control' name='statusNo' size=30 value=''></td></tr>
-			
-			<tr id=color2><td colspan=2 align=center>
-			<input type='submit' name='submit' value='submit' class='btn btn-primary'></td></tr>
-			
-			</table>
-		</c:forEach>
-			<br>
-			</form>
-			
-			</div>
-			</div>
-			</div>
-	
-	<footer class="footer">
-	<div class="container">
-		<p>
-			<font color="white">© 2014-2015 </font>
-		</p>
-		<p class="text-muted">
+<div class="panel panel-primary">
+		<div class="panel-heading">
+	       <h4 class="panel-title" style="font-size: 25px;">ข้อมูลโคขุน</h4>
+	   	</div>
+		<div class="panel-body">
+		 
 		
-		</p>
-	</div>
-	</footer>
-	
-	
-	
- 
-    </body>
+            
+           <div class="row form-group">
+							<div class="col-md-offset-1 col-md-2">
+								<h4>จำนวนโค :</h4>
+							</div>
+							<div class="col-md-7">
+								<input type="text" id="tel" class="form-control" placeholder="จำนวนโค" required/>
+							</div>
+						</div>
+						
+			 <div class="row form-group">
+							<div class="col-md-offset-1 col-md-2">
+								<h4>สายพันธุ์ :</h4>
+							</div>
+							<div class="col-md-7">
+				<select class="form-control" name="gene" id="gene" value=""  required>
+                <option></option>
+                <option>วากิว</option>
+                <option>กำแพงแสน</option>
+               
+           		</select>    
+							</div>
+						</div>
+									
+			<div class="row form-group">
+							<div class="col-md-offset-1 col-md-2">
+								<h4>รูปโค :</h4>
+							</div>
+							<div class="col-md-7">
+								<input type="file" id="tel" class="form-control" placeholder="อายุโค" required/>
+							</div>
+						</div>
+			
+										
+						<button type="submit" name="submit" id="submit" class="btn btn-success pull-left">บันทึก</button>  |
+						<a href="admin_viewcow3"><button type="button" class="btn btn-danger fui-plus-circle">ย้อนกลับ</button></a>
+						
+                    
+            </div>
+            
+              </div>
+            </div>
+         </div>
+         
+</body>
 </html>

@@ -30,6 +30,10 @@
 </head>
 
 <body>
+<c:if test="${sessionScope.name == null }">
+	<c:redirect url="index"/>
+</c:if>
+
 
 	<header class="header"> <nav
 	class="navbar navbar-default navbar-fixed-top">
@@ -65,7 +69,7 @@
               <!-- ปิดดอบดาว -->  
            </ul>
              <ul class="nav navbar-nav">
-            <li><a href="festivity">งานโค</a></li>
+            <li><a href="work">งานโค</a></li>
            
               <li><a href="user">สมาชิก</a></li>
                 <li><a href="report">ออกรายงาน</a></li>
@@ -84,6 +88,6 @@
            </div>
            </nav>
 </header>
-<center><h1>ยินดีต้อนรับ</h1></center>
+<h1 align="center">ยินดีต้อนรับ</h1>
 </body>
 </html>

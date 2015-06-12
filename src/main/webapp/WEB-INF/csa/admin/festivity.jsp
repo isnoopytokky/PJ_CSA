@@ -62,7 +62,7 @@
               <!-- ปิดดอบดาว -->  
            </ul>
              <ul class="nav navbar-nav">
-            <li class="active"><a class="nav-link current" href="festivity">งานโค</a></li>
+            <li class="active"><a class="nav-link current" href="work">งานโค</a></li>
               <li><a href="user">สมาชิก</a></li>
                <li><a href="#">ออกรายงาน</a></li>
                
@@ -124,11 +124,7 @@
 
 				</tbody>
 			</table>
-		    <div class="row">
-		        <div class="col-md-offset-10"><p>
-		        	<button type="button" class="btn btn-success glyphicon glyphicon-print"> พิมพ์ใบเสร็จทั้งหมด</button>
-		        </p></div>        
-		   	</div>
+		  
 		   	</c:forEach>
 		   	</form>
 		</div>
