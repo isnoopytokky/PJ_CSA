@@ -449,7 +449,8 @@
 						<h3 class="modal-title">ลบข้อมูลสมาชิก</h3>						
 					</div>
 					<div class="modal-body">
-						<h4 class="control">คุณต้องการที่จะลบข้อมูลนี้ใช่หรือไหม</h4>
+						<h4 class="control">คุณต้องการที่จะลบข้อมูลนี้ใช่หรือไหม</h4>						
+						<input type="text" id="delete-id" readonly class="form-control hide"/>
 					</div>
 					<div class="modal-footer">						
 						<button type="button" class="btn btn-default"  data-dismiss="modal">ปิด</button>	
@@ -502,6 +503,7 @@
         		{
         			alert( "ลบข้อมูลเรียบร้อย" );
        	  			$("#modal-delete").modal('hide');
+       	  			window.location.reload();
         		}
 	        	else
         		{
@@ -518,26 +520,74 @@
         function onClickDelete(val){        	
             //ajaxLink('/PJ_CSA/api/deleteUser', {'id': val}, 'modal-delete');
             $("#modal-delete").modal('show');
+            $("#delete-id").val(val);
         }
         function onClickView(val){        	
         	getUserInfo('/PJ_CSA/api/getUser', {'id': val}, 'modal-view-');
-            $("#modal-view").modal('show');
+            $("#modal-view").modal('show');            
         }
         
         $( "#btn_delete" ).click(function() {
-        	deleteUser('/PJ_CSA/api/deleteUser', {'id': '10'}, 'modal-delete');     
-        	window.location.reload();
+        	deleteUser('/PJ_CSA/api/deleteUser', {'id': $("#delete-id").val()}, 'modal-delete');
        	});
-        $( "#btn_save" ).click(function() {        	
-        	$.ajax({
-				url:"/PJ_CSA/api/updateUser2",
-				encoding:"UTF-8",
-				method:"POST",
-				data:$("#member").serialize()
-			}).done(function(a){
-				alert("แก้ไขเรียบร้อย");
-				window.location.reload();
-			});
+        $( "#btn_save" ).click(function() {    
+        	var user = $("#user").val();
+        	var pass = $("#password").val();
+        	var pass2 = $("#password2").val();
+        	var email = $("#email").val();
+        	var idcard = $("#idcard").val();
+        	var name = $("#name").val();
+        	var surname = $("#surname").val();
+        	var address = $("#address").val();
+        	var farm = $("#farm").val();
+        	var tel = $("#tel").val();
+        	var msg ="";
+        	if (user==""){
+        		msg+="กรุณากรอกชื่อผู้ใช้\n";
+        	}
+        	if (pass!=""){
+        		//msg+="กรุณากรอกรหัสผ่าน\n";        	
+	        	if (pass!=pass2){
+	        		msg+="รหัสไม่ตรงกัน\n";
+	        	}
+        	}
+        	if (email=="" ||email.indexOf('@') == -1 || email.indexOf('.') == -1){
+        		error = 1;
+        		msg+="กรุณากรอกอีเมลล์\n";
+        	}
+        	if (idcard==""){
+        		msg+="กรุณากรอกเลขบัตรประชาชน\n";
+        	}
+        	if (name==""){
+        		msg+="กรุณากรอกชื่อ\n";
+        	}
+        	if (surname==""){
+        		msg+="กรุณากรอกนามสกุล\n";
+        	}
+        	if (address==""){
+        		msg+="กรุณากรอกที่อยู่\n";
+        	}
+        	if (farm==""){
+        		msg+="กรุณากรอกชื่อฟาร์ม\n";
+        	}
+        	if (tel==""){
+        		msg+="กรุณากรอกเบอร์โทร\n";
+        	}
+        	if(msg!=""){
+        		alert(msg);
+        	}
+        	else
+       		{
+	        	$.ajax({
+					url:"/PJ_CSA/api/updateUser",
+					encoding:"UTF-8",
+					method:"POST",
+					data:$("#member").serialize()
+				}).done(function(a){
+					alert("แก้ไขเรียบร้อย");
+					window.location.reload();
+				});
+       		}
         	
        	});
 	</script>

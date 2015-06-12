@@ -80,23 +80,21 @@ public class UserController {
 	@RequestMapping(value="/api/updateUser",method=RequestMethod.POST)
 	@ResponseBody
 	public String updateUser(@ModelAttribute Member member) {		
-		String newpass = md5.getMD5(member.getPass());
-		member.setPass(newpass);	
+		String newpass = md5.getMD5(member.getPass());		
+		member.setPass(newpass);
+		
+		//if pass is empty get current pass 
+		if(member.getPass().equals(""))
+		{
+			Member member_old = new Member();
+			member_old = memberService.getMember(member.getId());
+			member.setPass(member_old.getPass());  
+		}
+				
 		memberService.edit(member);			
 		return "success";
 	}
-	
-	@RequestMapping(value="/api/updateUser2",method=RequestMethod.POST)
-	@ResponseBody
-	public String updateUser2(@ModelAttribute Member member) {		
-		String newpass = md5.getMD5(member.getPass());
-		member.setPass(newpass);	
-		member.setName("สวัสดี");	
-		memberService.edit(member);			
-		return "success";
-	}
-	
-  
+	  
 	
 	@RequestMapping(value = "/api/getStatus", method = RequestMethod.GET) 
 	@ResponseBody  

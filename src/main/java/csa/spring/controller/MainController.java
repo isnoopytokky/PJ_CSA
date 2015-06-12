@@ -30,6 +30,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 
+
 import csa.myapp.MD5;
 import csa.spring.model.Festivity;
 import csa.spring.model.Member;
@@ -236,6 +237,7 @@ public class MainController {
 	
 	@RequestMapping("/login")
 	public String login(HttpServletRequest request,@RequestParam("username") String username,@RequestParam("password") String password) {
+		password = md5.getMD5(password);
 		List userlist =memberService.login(username,password); 
 		int count = userlist.size();		 
 		 if (count>0){			 			 
