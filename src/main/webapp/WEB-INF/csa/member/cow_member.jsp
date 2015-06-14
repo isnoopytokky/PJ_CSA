@@ -353,7 +353,7 @@
 					</div>
 					<div class="modal-body">
 						<h4 class="control">คุณต้องการที่จะลบข้อมูลนี้ใช่หรือไหม</h4>						
-						<input type="text" id="delete-id" readonly class="form-control"/>
+						<input type="text" id="delete-id" readonly class="form-control hide"/>
 					</div>
 					<div class="modal-footer">						
 						<button type="button" class="btn btn-default"  data-dismiss="modal">ปิด</button>	
