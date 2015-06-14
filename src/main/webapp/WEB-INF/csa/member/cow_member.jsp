@@ -105,20 +105,25 @@
 				      </tr>
 				    </thead>
 				    <tbody>
-				   
-				      <tr>
-				    <td><div align="center"></div></td>
-				    <td><div align="center"></div></td>
-				    <td><div align="center"></div></td>
-				    <td><div align="center"></div></td>
-				    <td><div align="center"></div></td>
-				        <td><center><a href="mem_edit_cowsh"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit">
+				     
+				      <c:forEach items="${cowlist1}" var="cow" varStatus="loop">		  	
+					
+			      	<tr>
+				  	<td><div align="center">${loop.index+1}</div></td>
+				    <td><div align="center">${cow.CName}</div></td>
+				    <td><div align="center">${cow.CName}</div></td>
+				    <td><div align="center">${cow.CName}</div></td>
+				    <td><div align="center">${cow.CName}</div></td>
+				    
+				     			    
+				        <td><center><a href="#" onclick="onClickEdit('${cow.no}','1')"><button type="button" class="btn btn-primary">
 				        	<span class="glyphicon glyphicon-pencil"></span></button></a></center></td>
 				        
-				        <td><center><a href="#"><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete">
-				        	<span class="glyphicon glyphicon-remove"></span></button></a></center></td>
+				        <td><center><a href="#" onclick="onClickDelete('${cow.no}','1')"><button type="button" class="btn btn-danger">
+				        	<span class="glyphicon glyphicon-remove"></span></button></a></center></td>				        
 				        
-				      </tr>
+					</tr>
+					</c:forEach>
 
 				</tbody>
 			</table>
@@ -140,20 +145,27 @@
 				      </tr>
 				    </thead>
 				    <tbody>
-				   
-				      <tr>
-				    <td><div align="center"></div></td>
-				    <td><div align="center"></div></td>
-				    <td><div align="center"></div></td>
-				    <td><div align="center"></div></td>
-				    <td><div align="center"></div></td>
-				        <td><center><a href="mem_edit_cow2"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit">
+				      
+			      	<c:forEach items="${cowlist2}" var="cow" varStatus="loop">		  	
+					
+			      	<tr>
+				  	<td><div align="center">${loop.index+1}</div></td>
+				    <td><div align="center">${cow.CName}</div></td>
+				    <td><div align="center">${cow.CName}</div></td>
+				    <td><div align="center">${cow.CName}</div></td>
+				    <td><div align="center">${cow.CName}</div></td>
+				    
+				     			    
+				        <td><center><a href="#" onclick="onClickEdit('${cow.no}','2')"><button type="button" class="btn btn-primary">
 				        	<span class="glyphicon glyphicon-pencil"></span></button></a></center></td>
 				        
-				        <td><center><a href="#?CusID="><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete">
-				        	<span class="glyphicon glyphicon-remove"></span></button></a></center></td>
+				        <td><center><a href="#" onclick="onClickDelete('${cow.no}','2')"><button type="button" class="btn btn-danger">
+				        	<span class="glyphicon glyphicon-remove"></span></button></a></center></td>				        
 				        
-				      </tr>
+					</tr>
+
+				
+		   			</c:forEach>
 
 				</tbody>
 			</table>
@@ -176,18 +188,24 @@
 				    </thead>
 				    <tbody>
 				    
-				      <tr>
-				    <td><div align="center"></div></td>
-				    <td><div align="center"></div></td>
-				    <td><div align="center"></div></td>
-				   
-				        <td><center><a href="mem_edit_cow3"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit">
+				      <c:forEach items="${cowlist3}" var="cow" varStatus="loop">		  	
+					
+			      	<tr>
+				  	<td><div align="center">${loop.index+1}</div></td>
+				    <td><div align="center">${cow.CName}</div></td>
+				    <td><div align="center">${cow.CName}</div></td>			    
+				    
+				     			    
+				        <td><center><a href="#" onclick="onClickEdit('${cow.no}','3')"><button type="button" class="btn btn-primary">
 				        	<span class="glyphicon glyphicon-pencil"></span></button></a></center></td>
 				        
-				        <td><center><a href="#?CusID="><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete">
-				        	<span class="glyphicon glyphicon-remove"></span></button></a></center></td>
+				        <td><center><a href="#" onclick="onClickDelete('${cow.no}','3')"><button type="button" class="btn btn-danger">
+				        	<span class="glyphicon glyphicon-remove"></span></button></a></center></td>				        
 				        
-				      </tr>
+					</tr>
+
+				
+		   			</c:forEach>
 
 				</tbody>
 			</table>
@@ -197,7 +215,289 @@
             </div>
           </div></div></div>
           </div>
+         
+         <div id="modal-edit" class="modal fade">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-hidden="true"></button>
+						<h3 class="modal-title">แก้ไขข้อมูลโค</h3>
+					</div>
+					<form:form action="" commandName="cattledetail" id="cattledetail">
+						<div class="modal-body">
+													
+							<div class="row form-group">
+								<div class="col-md-offset-2 col-md-2">
+									<h4>ชื่อโค :</h4>
+								</div>
+								<div class="col-md-6">
+									<form:input path="no" id="no" class="form-control" placeholder="ชื่อโค" />
+									<form:input path="CName" id="CName" class="form-control" placeholder="ชื่อโค" />
+								</div>
+							</div>
+							
+							<div class="row form-group">
+								<div class="col-md-offset-2 col-md-2">
+									<h4>วันเกิดโค :</h4>
+								</div>
+								<div class="col-md-6">
+									<form:input path="CBirth" id="CBirth" class="form-control" type="date" />									
+								</div>
+							</div>
+							
+							<div class="row form-group">
+								<div class="col-md-offset-2 col-md-2">
+									<h4>อายุโค :</h4>
+								</div>
+								<div class="col-md-6">
+									<form:input path="CAge" id="CAge" class="form-control" placeholder="อายุโค" />
+								</div>
+							</div>
+							
+							<div class="row form-group">
+								<div class="col-md-offset-2 col-md-2">
+									<h4>สายพันธุ์ :</h4>
+								</div>
+								<div class="col-md-6">							    
+									<form:select path="CGen" id="CGen" class="form-control">
+										 <form:options items="${genList}" />
+									</form:select>
+								
+								</div>
+							</div>
+							
+							<div class="row form-group">
+								<div class="col-md-offset-2 col-md-2">
+									<h4>เพศ :</h4>
+								</div>
+								<div class="col-md-6">
+									<form:select path="CSex" id="CSex" class="form-control">
+										 <form:options items="${sexList}" />
+									</form:select>									 
+								</div>
+							</div>
+							
+							<div class="row form-group">
+								<div class="col-md-offset-2 col-md-2">
+									<h4>รูปโค :</h4>
+								</div>
+								<div class="col-md-6">
+									<input type="file" id="CName" class="form-control" />
+									<form:input path="CPic" id="CPic" class="form-control" placeholder="รูปโค" />
+									
+								</div>
+							</div>
+							
+							<div class="row form-group">
+								<div class="col-md-offset-2 col-md-2">
+									<h4>ใบพันธุ์ประวัติ :</h4>
+								</div>
+								<div class="col-md-6">
+									<input type="file" id="tel" class="form-control" />
+									<form:input path="CPic" id="CPic" class="form-control" placeholder="รูปโค" />
+								</div>
+							</div>
+							
+							<div class="row form-group">
+								<div class="col-md-offset-2 col-md-2">
+									<h4>ชื่อพ่อโค :</h4>
+								</div>
+								<div class="col-md-6">
+									<form:input path="father" id="father" class="form-control" />
+									
+								</div>
+							</div>
+							
+							<div class="row form-group">
+								<div class="col-md-offset-2 col-md-2">
+									<h4>ชื่อแม่โค :</h4>
+								</div>
+								<div class="col-md-6">
+									<form:input path="mother" id="mother" class="form-control" />
+								</div>
+							</div>
+							
+							<div class="row form-group">
+								<div class="col-md-offset-2 col-md-2">
+									<h4>ผู้พัฒนาพันธุ์ :</h4>
+								</div>
+								<div class="col-md-6">
+									<form:input path="memberId" id="memberId" class="form-control" />
+									<input type="text" id="typeid" readonly class="form-control hide"/>
+								</div>
+							</div>
+						 
+					</div>
+					
+					</form:form>
+					<div class="modal-footer">
+						
+						<button type="button" class="btn btn-default"  data-dismiss="modal">ปิด</button>
+						<button type="submit" class="btn btn-primary" id="btn_save">บันทึก</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- modal -->
+		
+        <!-- modal -->
+		<div id="modal-delete" class="modal fade">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-hidden="true"></button>
+						<h3 class="modal-title">ลบข้อมูลโค</h3>						
+					</div>
+					<div class="modal-body">
+						<h4 class="control">คุณต้องการที่จะลบข้อมูลนี้ใช่หรือไหม</h4>						
+						<input type="text" id="delete-id" readonly class="form-control"/>
+					</div>
+					<div class="modal-footer">						
+						<button type="button" class="btn btn-default"  data-dismiss="modal">ปิด</button>	
+						<button type="submit" class="btn btn-danger" id="btn_delete">ลบ</button>					
+					</div>
+				</div>
+			</div>
+		</div>
  
 
 </body>
 </html>
+
+
+<script type="text/javascript">
+		
+		function getCowInfo(url, params, compName) {
+		    $.post(url, params, function(data) {
+		    	debugger;
+		    	$("#"+ compName +"no").val(params.id);
+		    	$("#"+ compName +"CName").val(data.cattledetail.cname);
+		    	$("#"+ compName +"CBirth").val(data.cattledetail.cbirth);
+		    	$("#"+ compName +"CAge").val(data.cattledetail.cage);
+		    	$("#"+ compName +"CSex").val(data.cattledetail.csex);
+		    	//$("#"+ compName +"CColor").val(data.cattledetail.ccolor);
+		    	$("#"+ compName +"CGen").val(data.cattledetail.cgen);
+		    	$("#"+ compName +"CPic").val(data.cattledetail.cpic);
+		    	$("#"+ compName +"father").val(data.cattledetail.father);
+		    	$("#"+ compName +"mother").val(data.cattledetail.mother);
+		    	$("#"+ compName +"memberId").val(data.cattledetail.memberId);
+		    	
+		    	
+		    	//$("#typeid").val("1");
+		    	
+		    	
+  			    });
+		}
+
+		
+		function deleteCow(url, params, compName) {
+	        $.post(url, params, function(data) {
+	        	if(data=="success")
+        		{
+        			alert( "ลบข้อมูลเรียบร้อย" );
+       	  			$("#modal-delete").modal('hide');
+       	  			window.location.reload();
+        		}
+	        	else
+        		{
+	        		alert( "ไม่สามารถลบข้อมูลได้" );
+        		}
+	        });
+		}
+		
+        
+        function onClickEdit(val,type){        	
+        	getCowInfo('/PJ_CSA/api/getCow', {'id': val}, '');
+            $("#modal-edit").modal('show');
+            $("#typeid").val(type);
+        }
+        function onClickDelete(val){
+            $("#modal-delete").modal('show');
+            $("#delete-id").val(val);
+        }        
+        
+        $( "#btn_delete" ).click(function() {
+        	deleteCow('/PJ_CSA/api/deleteCow', {'id': $("#delete-id").val()}, 'modal-delete');
+       	});
+        
+        $( "#btn_save" ).click(function() { 
+        	var msg ="";
+        	var typeid = $("#typeid").val();
+        	/*
+        	var flg = 'new';
+        	var user = $("#user").val();
+        	var pass = $("#password").val();
+        	var pass2 = $("#password2").val();
+        	var email = $("#email").val();
+        	var idcard = $("#idcard").val();
+        	var name = $("#name").val();
+        	var surname = $("#surname").val();
+        	var address = $("#address").val();
+        	var farm = $("#farm").val();
+        	var tel = $("#tel").val();
+        	
+        	if (user==""){
+        		msg+="กรุณากรอกชื่อผู้ใช้\n";
+        	}
+        	if (pass!=""){
+        		//msg+="กรุณากรอกรหัสผ่าน\n";        	
+	        	if (pass!=pass2){
+	        		msg+="รหัสไม่ตรงกัน\n";
+	        	}
+        	}
+        	else
+       		{
+        		$("#password").val($("#password-old").val());
+        		flg = 'old';        		
+        	}
+        	if (email=="" ||email.indexOf('@') == -1 || email.indexOf('.') == -1){
+        		error = 1;
+        		msg+="กรุณากรอกอีเมลล์\n";
+        	}
+        	if (idcard==""){
+        		msg+="กรุณากรอกเลขบัตรประชาชน\n";
+        	}
+        	if (name==""){
+        		msg+="กรุณากรอกชื่อ\n";
+        	}
+        	if (surname==""){
+        		msg+="กรุณากรอกนามสกุล\n";
+        	}
+        	if (address==""){
+        		msg+="กรุณากรอกที่อยู่\n";
+        	}
+        	if (farm==""){
+        		msg+="กรุณากรอกชื่อฟาร์ม\n";
+        	}
+        	if (tel==""){
+        		msg+="กรุณากรอกเบอร์โทร\n";
+        	}*/
+        	if(msg!=""){
+        		alert(msg);
+        	}
+        	else
+       		{
+	        	$.ajax({
+					url:"/PJ_CSA/api/updateCow",
+					encoding:"UTF-8",
+					method:"POST",
+					data:$("#cattledetail").serialize() + "&flg=" + typeid
+				}).done(function(a){
+					debugger;
+					alert("แก้ไขเรียบร้อย");
+					window.location.reload();
+				});
+       		}
+        	
+       	});
+        
+        function getAge(date)
+        {
+	        dob = new Date(date);
+	        var today = new Date();
+	        var age = Math.floor((today-dob) / (365.25 * 24 * 60 * 60 * 1000));
+	        return age;
+        }
+	</script>

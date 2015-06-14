@@ -70,7 +70,7 @@
            </header>
 	
 	
-	    <h1 align="center">ลงทะเบียนโคประกวด </h1>
+	    <h1 align="center">ลงทะเบียนโคประกวด</h1>
 	    <hr>
 	    
 	    
@@ -86,109 +86,116 @@
 		<div class="panel-body">
 		 
 		
-            
-           <div class="row form-group">
-							<div class="col-md-offset-1 col-md-2">
-								<h4>ชื่อโค :</h4>
+            				<form:form action="" commandName="cattledetail" id="cattledetail">	
+							<div class="row form-group">
+								<div class="col-md-offset-1 col-md-2">
+									<h4>ชื่อโค :</h4>
+								</div>
+								<div class="col-md-7">									
+									<form:input path="CName" id="CName" class="form-control" placeholder="ชื่อโค" />
+								</div>
 							</div>
-							<div class="col-md-7">
-								<input type="text" id="tel" class="form-control" placeholder="ชื่อโค" required/>
+							
+							<div class="row form-group">
+								<div class="col-md-offset-1 col-md-2">
+									<h4>วันเกิดโค :</h4>
+								</div>
+								<div class="col-md-7">
+									<form:input path="CBirth" id="CBirth" class="form-control" type="date" />									
+								</div>
 							</div>
-						</div>
-						
-			 <div class="row form-group">
-							<div class="col-md-offset-1 col-md-2">
-								<h4>วันเกิดโค :</h4>
+							
+							<div class="row form-group">
+								<div class="col-md-offset-1 col-md-2">
+									<h4>อายุโค :</h4>
+								</div>
+								<div class="col-md-7">
+									<form:input path="CAge" id="CAge" class="form-control" placeholder="อายุโค" />
+								</div>
 							</div>
-							<div class="col-md-7">
-								<input type="date" id="tel" class="form-control" placeholder="ชื่องาน" required/>
-							</div>
-						</div>
-			
-			<div class="row form-group">
-							<div class="col-md-offset-1 col-md-2">
-								<h4>อายุโค :</h4>
-							</div>
-							<div class="col-md-7">
-								<input type="text" id="tel" class="form-control" placeholder="อายุโค" required/>
-							</div>
-						</div>
-						
-			 <div class="row form-group">
-							<div class="col-md-offset-1 col-md-2">
-								<h4>สายพันธุ์ :</h4>
-							</div>
-							<div class="col-md-7">
-				<select class="form-control" name="gene" id="gene" value=""  required>
-                <option></option>
-                <option>วากิว</option>
-                <option>กำแพงแสน</option>
-               
-           		</select>    
-							</div>
-						</div>
-			
-			 <div class="row form-group">
-							<div class="col-md-offset-1 col-md-2">
-								<h4>เพศ :</h4>
-							</div>
-							<div class="col-md-7">
-				<select class="form-control" name="gene" id="gene" value=""  required>
-                <option></option>
-                <option>ผู้</option>
-                <option>เมีย</option>
-               
-           		</select>    
-							</div>
-						</div>
+							
+							<div class="row form-group">
+								<div class="col-md-offset-1 col-md-2">
+									<h4>สายพันธุ์ :</h4>
+								</div>
+								
+								<div class="col-md-7">
+									<form:select path="CGen" id="CGen" class="form-control">
+											 <form:options items="${genList}" />
+									</form:select>			
+								</div>					
 									
-			<div class="row form-group">
-							<div class="col-md-offset-1 col-md-2">
-								<h4>รูปโค :</h4>
 							</div>
-							<div class="col-md-7">
-								<input type="file" id="tel" class="form-control" placeholder="อายุโค" required/>
+							
+							<div class="row form-group">
+								<div class="col-md-offset-1 col-md-2">
+									<h4>เพศ :</h4>
+								</div>
+								<div class="col-md-7">
+									<form:select path="CSex" id="CSex" class="form-control">
+										 <form:options items="${sexList}" />
+									</form:select>									 
+								</div>
+							</div>
+							
+							<div class="row form-group">
+								<div class="col-md-offset-1 col-md-2">
+									<h4>รูปโค :</h4>
+								</div>
+								<div class="col-md-7">
+									<input type="file" id="CName" class="form-control" />
+									<form:input path="CPic" id="CPic" class="form-control" placeholder="รูปโค" />
+									
+								</div>
+							</div>
+							
+							<div class="row form-group">
+								<div class="col-md-offset-1 col-md-2">
+									<h4>ใบพันธุ์ประวัติ :</h4>
+								</div>
+								<div class="col-md-7">
+									<input type="file" id="tel" class="form-control" />
+									<form:input path="CPic" id="CPic" class="form-control" placeholder="รูปโค" />
+								</div>
+							</div>
+							
+							<div class="row form-group">
+								<div class="col-md-offset-1 col-md-2">
+									<h4>ชื่อพ่อโค :</h4>
+								</div>
+								<div class="col-md-7">
+									<form:input path="father" id="father" class="form-control" />
+									
+								</div>
+							</div>
+							
+							<div class="row form-group">
+								<div class="col-md-offset-1 col-md-2">
+									<h4>ชื่อแม่โค :</h4>
+								</div>
+								<div class="col-md-7">
+									<form:input path="mother" id="mother" class="form-control" />
+								</div>
+							</div>
+							
+							<div class="row form-group">
+								<div class="col-md-offset-1 col-md-2">
+									<h4>ผู้พัฒนาพันธุ์ :</h4>
+								</div>
+								<div class="col-md-7">
+									<form:input path="memberId" id="memberId" class="form-control" />
+									<input type="text" id="typeid" readonly class="form-control hide"/>
+								</div>
+							</div>
+							</form:form>
+						
+						<div class="row">
+							<div class="col-md-12 text-center">
+								<button type="submit" class="btn btn-success text-center" id="btn_save">ลงทะเบียน</button>
+								<button type="button" class="btn btn-danger text-center"  data-dismiss="modal">ย้อนกลับ</button>
 							</div>
 						</div>
-			
-			<div class="row form-group">
-							<div class="col-md-offset-1 col-md-2">
-								<h4>ใบพันธุ์ประวัติ :</h4>
-							</div>
-							<div class="col-md-7">
-								<input type="file" id="tel" class="form-control" placeholder="อายุโค" required/>
-							</div>
-						</div>
-			
-			<div class="row form-group">
-							<div class="col-md-offset-1 col-md-2">
-								<h4>ชื่อพ่อโค :</h4>
-							</div>
-							<div class="col-md-7">
-								<input type="text" id="tel" class="form-control" placeholder="ชื่อพ่อโค" required/>
-							</div>
-						</div>
-			
-			<div class="row form-group">
-							<div class="col-md-offset-1 col-md-2">
-								<h4>ชื่อแม่โค :</h4>
-							</div>
-							<div class="col-md-7">
-								<input type="text" id="tel" class="form-control" placeholder="ชื่อแม่โค" required/>
-							</div>
-						</div>
-			
-			<div class="row form-group">
-							<div class="col-md-offset-1 col-md-2">
-								<h4>ผู้พัฒนาพันธุ์ :</h4>
-							</div>
-							<div class="col-md-7">
-								<input type="text" id="tel" class="form-control" placeholder="ผู้พัฒนาพันธุ์" required/>
-							</div>
-						</div>
-															
-						<button type="submit" name="submit" id="submit" class="btn btn-success pull-left">ลงทะเบียน</button>  |
-						<a href="cow_member"><button type="button" class="btn btn-danger fui-plus-circle">ย้อนกลับ</button></a>
+						
 						
                     
             </div>
@@ -198,7 +205,34 @@
          </div>
         
          
+		<script type="text/javascript">
 
+	        $( "#btn_save" ).click(function() { 
+	        	var msg ="";
+	        	var typeid = "1";	        	
+	        	
+	        	
+	        	if(msg!=""){
+	        		alert(msg);
+	        	}
+	        	else
+	       		{
+		        	$.ajax({
+						url:"/PJ_CSA/api/addCow",
+						encoding:"UTF-8",
+						method:"POST",
+						data:$("#cattledetail").serialize() + "&flg=" + typeid
+					}).done(function(a){
+						debugger;
+						alert("แก้ไขเรียบร้อย");
+						window.location.reload();
+					});
+	       		}
+	        	
+	       	});
+		
+		
+		</script>
 
 
 <footer class="footer">

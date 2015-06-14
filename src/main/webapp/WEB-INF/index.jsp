@@ -379,6 +379,7 @@ $(document).on('click','#add3',function(s){
 					data:$("#member").serialize()
 				}).done(function(a){
 					alert("สมัครเรียบร้อย");
+					window.location.reload();
 				});
 			}else{
 				alert("ชื่อผู้ใช้ซ้ำ");
