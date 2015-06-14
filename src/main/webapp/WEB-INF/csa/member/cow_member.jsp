@@ -232,7 +232,7 @@
 									<h4>ชื่อโค :</h4>
 								</div>
 								<div class="col-md-6">
-									<form:input path="no" id="no" class="form-control" placeholder="ชื่อโค" />
+									<form:input path="no" id="no" class="form-control hide" placeholder="ชื่อโค" />
 									<form:input path="CName" id="CName" class="form-control" placeholder="ชื่อโค" />
 								</div>
 							</div>
@@ -284,7 +284,7 @@
 								</div>
 								<div class="col-md-6">
 									<input type="file" id="CName" class="form-control" />
-									<form:input path="CPic" id="CPic" class="form-control" placeholder="รูปโค" />
+									<form:input path="CPic" id="CPic" class="form-control hide" placeholder="รูปโค" />
 									
 								</div>
 							</div>
@@ -295,7 +295,7 @@
 								</div>
 								<div class="col-md-6">
 									<input type="file" id="tel" class="form-control" />
-									<form:input path="CPic" id="CPic" class="form-control" placeholder="รูปโค" />
+									<form:input path="CPic" id="CPic" class="form-control hide" placeholder="รูปโค" />
 								</div>
 							</div>
 							
@@ -323,7 +323,8 @@
 									<h4>ผู้พัฒนาพันธุ์ :</h4>
 								</div>
 								<div class="col-md-6">
-									<form:input path="memberId" id="memberId" class="form-control" />
+									<form:input path="devoloper" id="devoloper" class="form-control" />
+									<form:input path="memberId" id="memberId" class="form-control hide" />
 									<input type="text" id="typeid" readonly class="form-control hide"/>
 								</div>
 							</div>
@@ -368,6 +369,13 @@
 
 
 <script type="text/javascript">
+
+		$( document ).ready(function() {
+			$('#CBirth').on('input propertychange paste', function() {
+				var age = getAge($('#CBirth').val());
+				$("#CAge").val(age);
+			});
+		});
 		
 		function getCowInfo(url, params, compName) {
 		    $.post(url, params, function(data) {
@@ -383,7 +391,7 @@
 		    	$("#"+ compName +"father").val(data.cattledetail.father);
 		    	$("#"+ compName +"mother").val(data.cattledetail.mother);
 		    	$("#"+ compName +"memberId").val(data.cattledetail.memberId);
-		    	
+		    	$("#"+ compName +"devoloper").val(data.cattledetail.devoloper);
 		    	
 		    	//$("#typeid").val("1");
 		    	
@@ -495,9 +503,11 @@
         
         function getAge(date)
         {
-	        dob = new Date(date);
+	        dob = new Date(date);	        
+	        dob.setDate(dob.getDate() - 1);
 	        var today = new Date();
-	        var age = Math.floor((today-dob) / (365.25 * 24 * 60 * 60 * 1000));
+	        var age = Math.floor((today- dob) / (365.25 * 24 * 60 * 60 * 1000));
+	        if(age < 0) age =0;
 	        return age;
         }
 	</script>

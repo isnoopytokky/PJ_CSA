@@ -3,6 +3,7 @@ package csa.spring.controller;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -37,37 +38,45 @@ public class MemberController {
 
 	/*   */
 	@RequestMapping("/cow_member")////เธซเธ�เน�เธฒเน�เธชเธ”เธ�เน�เธ�
-	public ModelAndView cm(Map<String, Object> map){
-		
-		CattleDetails cattledetail = new CattleDetails();
-		map.put("cattledetail", cattledetail);
-		map.put("cowlist1",cattleDetailService.getCattleDetailByType(1));
-		map.put("cowlist2",cattleDetailService.getCattleDetailByType(2));
-		map.put("cowlist3",cattleDetailService.getCattleDetailByType(3));
+	public ModelAndView cm(HttpSession session,Map<String, Object> map){
 		
 		
-		Map<String,String> genList = new HashMap<String, String>();
-		Map<String,String> sexList = new HashMap<String, String>();	
+		Integer userid = (Integer) session.getAttribute("userid");
+		if(userid == null)
+			return new ModelAndView("redirect:index");
+		else
+		{
 		
-		List statusNoResult;
-//		statusNoResult = statusnoService.getAllStatusNo();		
-//		for(int i = 0;i<statusNoResult.size();i++)
-//		{	
-//			StatusNo statusNo =  (StatusNo) statusNoResult.get(i);
-//			statusNoList.put(statusNo.getIdstatusNo().toString(), statusNo.getStatusName());
-//		}
-		genList.put("","");
-		genList.put("วากิว","วากิว");
-		genList.put("กำแพงแสน","กำแพงแสน");
-		
-		sexList.put("ผู้","ผู้");
-		sexList.put("เมีย","เมีย");
-		
-		map.put("genList",genList);
-		map.put("sexList",sexList);
-		
-		ModelAndView model = new ModelAndView("/csa/member/cow_member");
-		return model;
+			CattleDetails cattledetail = new CattleDetails();
+			map.put("cattledetail", cattledetail);
+			map.put("cowlist1",cattleDetailService.getCattleDetailByType(1,userid));
+			map.put("cowlist2",cattleDetailService.getCattleDetailByType(2,userid));
+			map.put("cowlist3",cattleDetailService.getCattleDetailByType(3,userid));
+			
+			
+			Map<String,String> genList = new HashMap<String, String>();
+			Map<String,String> sexList = new HashMap<String, String>();	
+			
+			List statusNoResult;
+	//		statusNoResult = statusnoService.getAllStatusNo();		
+	//		for(int i = 0;i<statusNoResult.size();i++)
+	//		{	
+	//			StatusNo statusNo =  (StatusNo) statusNoResult.get(i);
+	//			statusNoList.put(statusNo.getIdstatusNo().toString(), statusNo.getStatusName());
+	//		}
+			genList.put("","");
+			genList.put("วากิว","วากิว");
+			genList.put("กำแพงแสน","กำแพงแสน");
+			
+			sexList.put("ผู้","ผู้");
+			sexList.put("เมีย","เมีย");
+			
+			map.put("genList",genList);
+			map.put("sexList",sexList);
+			
+			ModelAndView model = new ModelAndView("/csa/member/cow_member");
+			return model;
+		}
 	}
 	
 	@RequestMapping(value = "/api/getCow", method = RequestMethod.POST) 
@@ -89,6 +98,7 @@ public class MemberController {
 		cattledetailResult.setCPic(cattledetail.getCPic());
 		cattledetailResult.setFather(cattledetail.getFather());
 		cattledetailResult.setMother(cattledetail.getMother());
+		cattledetailResult.setDevoloper(cattledetail.getDevoloper());
 		cattledetailResult.setMemberId(cattledetail.getMemberId());
 		 
 
@@ -107,16 +117,20 @@ public class MemberController {
 	
 	@RequestMapping(value="/api/updateCow",method=RequestMethod.POST)
 	@ResponseBody
-	public String updateCow(@ModelAttribute CattleDetails cattledetail,@RequestParam("flg") Integer flg) {	
-		cattledetail.setTypecow(typeCowService.getTypecow(flg));		
+	public String updateCow(HttpSession session,@ModelAttribute CattleDetails cattledetail,@RequestParam("flg") Integer flg) {	
+		Integer userid = (Integer) session.getAttribute("userid");		
+		cattledetail.setTypecow(typeCowService.getTypecow(flg));	
+		cattledetail.setMemberId(userid);
 		cattleDetailService.edit(cattledetail);			
 		return "success";
 	}
 	
 	@RequestMapping(value="/api/addCow",method=RequestMethod.POST)
 	@ResponseBody
-	public String addCow(@ModelAttribute CattleDetails cattledetail,@RequestParam("flg") Integer flg) {	
-		cattledetail.setTypecow(typeCowService.getTypecow(flg));		
+	public String addCow(HttpSession session,@ModelAttribute CattleDetails cattledetail,@RequestParam("flg") Integer flg) {	
+		Integer userid = (Integer) session.getAttribute("userid");
+		cattledetail.setTypecow(typeCowService.getTypecow(flg));
+		cattledetail.setMemberId(userid);
 		cattleDetailService.add(cattledetail);			
 		return "success";
 	}

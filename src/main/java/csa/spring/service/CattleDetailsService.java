@@ -11,5 +11,5 @@ public interface CattleDetailsService {
 	public void delete(int id);
 	public CattleDetails getCattleDetail(int id);
 	public List getAllCattleDetail();
-	public List getCattleDetailByType(int typeid);
+	public List getCattleDetailByType(int typeid,int userid);
 }

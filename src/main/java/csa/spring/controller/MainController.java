@@ -253,26 +253,31 @@ public class MainController {
 				link="index_admin";
 				session.setAttribute("status", checklogin.getStatusNo());
 				session.setAttribute("name", checklogin.getName());
+				session.setAttribute("userid", checklogin.getId());
 			}
 			if(auth==2){
 				link="index_official";
 				session.setAttribute("status", checklogin.getStatusNo());
 				session.setAttribute("name", checklogin.getName());
+				session.setAttribute("userid", checklogin.getId());
 			}
 			if(auth==3){
 				link="index_member";
 				session.setAttribute("status", checklogin.getStatusNo());
 				session.setAttribute("name", checklogin.getName());
+				session.setAttribute("userid", checklogin.getId());
 			}
 			if(auth==4){
 				link="ban";
 				session.setAttribute("status", checklogin.getStatusNo());
 				session.setAttribute("name", checklogin.getName());
+				session.setAttribute("userid", checklogin.getId());
 			}
 			if(auth==5){
 				link="pending";
 				session.setAttribute("status", checklogin.getStatusNo());
 				session.setAttribute("name", checklogin.getName());
+				session.setAttribute("userid", checklogin.getId());
 			}
 			
 		}

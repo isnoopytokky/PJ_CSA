@@ -33,6 +33,7 @@ public class CattleDetails implements java.io.Serializable {
 	private String CPic;
 	private String father;
 	private String mother;
+	private String devoloper;
 	private Integer memberId;
 	private Set<CattleShows> cattleShowses = new HashSet<CattleShows>(0);
 	private Set<CattleAuctionpun> cattleAuctionpuns = new HashSet<CattleAuctionpun>(0);
@@ -42,7 +43,7 @@ public class CattleDetails implements java.io.Serializable {
 	}
 
 	public CattleDetails(Typecow typecow, String CName, String CBirth, String CAge, String CSex, String CColor,
-			String CGen, String CPic, String father, String mother, Integer memberId, Set<CattleShows> cattleShowses,
+			String CGen, String CPic, String father, String mother,String devoloper, Integer memberId, Set<CattleShows> cattleShowses,
 			Set<CattleAuctionpun> cattleAuctionpuns, Set<CattleAuctionkokun> cattleAuctionkokuns) {
 		this.typecow = typecow;
 		this.CName = CName;
@@ -54,6 +55,7 @@ public class CattleDetails implements java.io.Serializable {
 		this.CPic = CPic;
 		this.father = father;
 		this.mother = mother;
+		this.devoloper = devoloper;
 		this.memberId = memberId;
 		this.cattleShowses = cattleShowses;
 		this.cattleAuctionpuns = cattleAuctionpuns;
@@ -157,9 +159,18 @@ public class CattleDetails implements java.io.Serializable {
 	public String getMother() {
 		return this.mother;
 	}
-
+	
 	public void setMother(String mother) {
 		this.mother = mother;
+	}
+	
+	@Column(name = "devoloper", length = 50)
+	public String getDevoloper() {
+		return this.devoloper;
+	}	
+	
+	public void setDevoloper(String devoloper) {
+		this.devoloper = devoloper;
 	}
 
 	@Column(name = "member_id")

@@ -48,9 +48,9 @@ public class CattleDetailsServiceImpl implements CattleDetailsService{
 	}
 
 	@Override
-	public List getCattleDetailByType(int typeid) {
+	public List getCattleDetailByType(int typeid,int userid) {
 		// TODO Auto-generated method stub
-		return cattleDetailsDao.getCattleDetailByType(typeid);
+		return cattleDetailsDao.getCattleDetailByType(typeid,userid);
 	}
 	 
 

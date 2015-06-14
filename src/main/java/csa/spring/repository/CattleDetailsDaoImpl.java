@@ -49,9 +49,9 @@ public class CattleDetailsDaoImpl implements CattleDetailsDao{
 	}
 
 	@Override
-	public List getCattleDetailByType(int  typeid) {
+	public List getCattleDetailByType(int  typeid,int userid) {
 		// TODO Auto-generated method stub
-		return session.getCurrentSession().createQuery("from CattleDetails where c_typeid = "+typeid).list();
+		return session.getCurrentSession().createQuery("from "+"CattleDetails where memberId = "+userid+" and c_typeid = "+typeid).list();
 	}
 
 	
