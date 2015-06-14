@@ -249,7 +249,7 @@
 								<form:input path="user" id="user" class="form-control"/>
 							</div>
 						</div>
-						<div class="row form-group">
+						<div class="row form-group hide">
 							<div class="col-md-offset-2 col-md-2">
 								<h4>รหัสผ่าน:</h4>
 							</div>
@@ -257,7 +257,7 @@
 								<form:password path="pass" id="password" class="form-control"/>
 							</div>
 						</div>
-						<div class="row form-group">
+						<div class="row form-group hide">
 							<div class="col-md-offset-2 col-md-2">
 								<h4>ยืนยัน-รหัสผ่าน:</h4>
 							</div>
