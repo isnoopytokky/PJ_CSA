@@ -346,7 +346,7 @@ public class MainController {
 	@RequestMapping(value="/api/updateFestivity",method=RequestMethod.POST)
 	@ResponseBody
 	public String updateFestivity(HttpSession session,@ModelAttribute Festivity festivity,@RequestParam("flg") Integer flg) {	
-		Integer userid = (Integer) session.getAttribute("userid");
+		Integer userid = (Integer) session.getAttribute("userid");		
 		festivity.setMemberId(userid);
 		festivity.setType(typeService.getType(flg));
 		festivityService.edit(festivity);			

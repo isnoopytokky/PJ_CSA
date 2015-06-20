@@ -208,6 +208,8 @@
 								 	 </c:forEach>			 	  
 								 	 </select>	
 								 	 <input type="text" id="typeid" readonly class="form-control hide"/>
+								 	 <form:input path="no" id="no" class="form-control hide" />
+								 	 
 								 	 					 				 		    
 							 	</div>
 							 </div>
@@ -354,6 +356,7 @@
 		    	debugger;
 		    	
 		    	$("#typeids").val($("#typeid").val());
+		    	$("#no").val(params.id);
 		    	$("#gene").val(data.festivity.gene);
 		    	$("#title").val(data.festivity.title);
 		    	$("#SWork").val(data.festivity.swork);
@@ -372,6 +375,32 @@
 	        $("#modal-edit").modal('show');
 	        $("#typeid").val(type);
 	    }
+	    
+	    $( "#btn_save" ).click(function() { 
+         	var msg ="";
+         	
+         	debugger;
+         	var typeid = $("#typeids").val();
+         	
+         	 
+         	if(msg!=""){
+         		alert(msg);
+         	}
+         	else
+        		{
+ 	        	$.ajax({
+ 					url:"/PJ_CSA/api/updateFestivity",
+ 					encoding:"UTF-8",
+ 					method:"POST",
+ 					data:$("#festivity").serialize() + "&flg=" + typeid
+ 				}).done(function(a){
+ 					debugger;
+ 					alert("เพิ่มเรียบร้อย");
+ 					window.location.href = ("work");
+ 				});
+        		}
+         	
+        	});
 	    
 	</script>
 	
