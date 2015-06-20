@@ -41,6 +41,13 @@ public class UserController {
 		return model;
 	}
 	
+	
+	@RequestMapping("/edit_member")
+	public ModelAndView edit_member(){
+		ModelAndView model = new ModelAndView("/about");
+		return model;
+	}
+	
 	@RequestMapping(value = "/api/getUser", method = RequestMethod.POST) 
 	@ResponseBody  
 	public  Map<String, ? extends Object> getUser(@RequestParam("id") Integer id) 

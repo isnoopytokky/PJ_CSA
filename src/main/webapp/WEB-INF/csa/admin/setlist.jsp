@@ -122,13 +122,14 @@
 								<h4>สี :</h4>
 							</div>
 							<div class="col-md-7">
-								<input type="tel" id="tel" class="form-control" placeholder="สี" required/>
+								<form:form action="" commandName="colorType" id="colorForm">									
+									<form:input path="colorName" id="colorName" class="form-control"  placeholder="สี"/>									
+								</form:form>
 							</div>
 						</div></div></td>
 				   
 				       
-				        <td><div align="center"><a href="#"  data-toggle="modal"
-				data-target="#log"><button type="button" class="btn btn-success">
+				        <td><div align="center"><a><button type="button" class="btn btn-success" id="btn_color_save">
 				        	<span class="glyphicon glyphicon-floppy-saved"></span></button></a></div></td>
 				      </tr>
 				</tbody>
@@ -152,13 +153,16 @@
 				    </thead>
 				    <tbody>
 				   
-				      <tr>
-				   
-				    <td><div align="center">แดง</div></td>
-				        <td><div align="center"><a href="#"  data-toggle="modal"
-				data-target="#log"><button type="button" class="btn btn-danger">
-				        	<span class="glyphicon glyphicon-floppy-remove"></span></button></a></div></td>
+				   	  <c:forEach items="${colortypelist }" var="color" varStatus="loop">
+				      <tr>				   
+				    	<td><div align="center">${color.colorName}</div></td>
+				        <td>
+				        	<div align="center"><a href="#" onclick="onClickDeleteColor('${color.idcolor}')"><button type="button" class="btn btn-danger">
+			        			<span class="glyphicon glyphicon-floppy-remove"></span></button></a>
+		        			</div>
+	        			</td>
 				      </tr>
+				      </c:forEach>
 
 						</tbody>
 						</table>
@@ -185,14 +189,15 @@
 							<div class="col-md-offset-1 col-md-2">
 								<h4>สายพันธุ์ :</h4>
 							</div>
-							<div class="col-md-7">
-								<input type="tel" id="tel" class="form-control" placeholder="สายพันธุ์" required/>
+							<div class="col-md-7">								
+								<form:form action="" commandName="genType" id="genForm">									
+									<form:input path="genName" id="genName" class="form-control"  placeholder="สายพันธุ์"/>									
+								</form:form>
 							</div>
 						</div></div></td>
 				   
 				       
-				        <td><div align="center"><a href="#"  data-toggle="modal"
-				data-target="#log"><button type="button" class="btn btn-success">
+				        <td><div align="center"><a><button type="button" class="btn btn-success" id="btn_gen_save">
 				        	<span class="glyphicon glyphicon-floppy-saved"></span></button></a></div></td>
 				      </tr>
 				</tbody>
@@ -218,11 +223,19 @@
 				   
 				      <tr>
 				   
-				    <td><div align="center">วากิว</div></td>
-				        <td><div align="center"><a href="#"  data-toggle="modal"
-				data-target="#log"><button type="button" class="btn btn-danger">
-				        	<span class="glyphicon glyphicon-floppy-remove"></span></button></a></div></td>
+ 
+				      
+				      <c:forEach items="${genTypelist }" var="genType" varStatus="loop">
+				      <tr>				   
+				    	<td><div align="center">${genType.genName}</div></td>
+				        <td>
+				        	<div align="center"><a href="#"  onclick="onClickDeleteGen('${genType.idgen}')"><button type="button" class="btn btn-danger">
+			        			<span class="glyphicon glyphicon-floppy-remove"></span></button></a>
+		        			</div>
+	        			</td>
 				      </tr>
+				      </c:forEach>
+				      
 
 						</tbody>
 						</table>
@@ -314,5 +327,159 @@
             </div>
           </div></div></div>
           </div>
+          
+          
+          
+          <!-- modal -->
+		<div id="modal-delete-color" class="modal fade">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-hidden="true"></button>
+						<h3 class="modal-title">ลบสีโค</h3>						
+					</div>
+					<div class="modal-body">
+						<h4 class="control">คุณต้องการที่จะลบข้อมูลนี้ใช่หรือไม่</h4>						
+						<input type="text" id="delete-color-id" readonly class="form-control hide"/>
+					</div>
+					<div class="modal-footer">						
+						<button type="button" class="btn btn-default"  data-dismiss="modal">ปิด</button>	
+						<button type="submit" class="btn btn-danger" id="btn_color_delete">ลบ</button>					
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- modal -->
+		
+		<!-- modal -->
+		<div id="modal-delete-gen" class="modal fade">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-hidden="true"></button>
+						<h3 class="modal-title">ลบพันธุ์โค</h3>						
+					</div>
+					<div class="modal-body">
+						<h4 class="control">คุณต้องการที่จะลบข้อมูลนี้ใช่หรือไม่</h4>						
+						<input type="text" id="delete-gen-id" readonly class="form-control hide"/>
+					</div>
+					<div class="modal-footer">						
+						<button type="button" class="btn btn-default"  data-dismiss="modal">ปิด</button>	
+						<button type="submit" class="btn btn-danger" id="btn_gen_delete">ลบ</button>					
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- modal -->
+		
+		<script type="text/javascript">
+		
+				$( "#btn_color_save" ).click(function() { 
+		         	var msg ="";		         	 
+					var colorname = $("#colorName").val();
+		         	
+		         	if (colorname==""){
+		        		msg+="กรุณากรอกสี\n";
+		        	}
+		         	
+		         	if(msg!=""){
+		         		alert(msg);
+		         		$("#colorName").focus();
+		         	}
+		         	else{
+		 	        	$.ajax({
+		 					url:"/PJ_CSA/api/addColor",
+		 					encoding:"UTF-8",
+		 					method:"POST",
+		 					data:$("#colorForm").serialize() 
+		 				}).done(function(a){
+		 					debugger;
+		 					alert("เพิ่มเรียบร้อย");
+		 					window.location.href = ("setlist");
+		 				});
+	        		}
+		         	
+	        	});
+				
+				function deleteColor(url, params, compName) {
+			        $.post(url, params, function(data) {
+			        	if(data=="success")
+			    		{
+			    			alert( "ลบข้อมูลเรียบร้อย" );
+			   	  			$("#modal-delete").modal('hide');
+			   	  			window.location.reload();
+			    		}
+			        	else
+			    		{
+			        		alert( "ไม่สามารถลบข้อมูลได้" );
+			    		}
+			        });
+				}
+			    
+			    function onClickDeleteColor(val){
+			        $("#modal-delete-color").modal('show');
+			        $("#delete-color-id").val(val);
+			    }        
+			    
+			    $( "#btn_color_delete" ).click(function() {
+			    	deleteColor('/PJ_CSA/api/deleteColor', {'id': $("#delete-color-id").val()}, 'modal-delete-color');
+			   	});
+			    
+			    
+			    ///
+			    $( "#btn_gen_save" ).click(function() { 
+		         	var msg ="";
+		         	var genname = $("#genName").val();
+		         	
+		         	if (genname==""){
+		        		msg+="กรุณากรอกชื่อสายพันธุ์\n";
+		        	}
+		         	
+		         	if(msg!=""){
+		         		alert(msg);
+		         		$("#genName").focus();
+		         	}
+		         	else{
+		 	        	$.ajax({
+		 					url:"/PJ_CSA/api/addGen",
+		 					encoding:"UTF-8",
+		 					method:"POST",
+		 					data:$("#genForm").serialize() 
+		 				}).done(function(a){
+		 					debugger;
+		 					alert("เพิ่มเรียบร้อย");
+		 					window.location.href = ("setlist");
+		 				});
+	        		}
+		         	
+	        	});
+			    
+			    function deleteGen(url, params, compName) {
+			        $.post(url, params, function(data) {
+			        	if(data=="success")
+			    		{
+			    			alert( "ลบข้อมูลเรียบร้อย" );
+			   	  			$("#modal-delete-gen").modal('hide');
+			   	  			window.location.reload();
+			    		}
+			        	else
+			    		{
+			        		alert( "ไม่สามารถลบข้อมูลได้" );
+			    		}
+			        });
+				}
+			    
+			    function onClickDeleteGen(val){
+			        $("#modal-delete-gen").modal('show');
+			        $("#delete-gen-id").val(val);
+			    }        
+			    
+			    $( "#btn_gen_delete" ).click(function() {
+			    	deleteGen('/PJ_CSA/api/deleteGen', {'id': $("#delete-gen-id").val()}, 'modal-delete-gen');
+			   	});
+		
+		</script>
 </body>
 </html>

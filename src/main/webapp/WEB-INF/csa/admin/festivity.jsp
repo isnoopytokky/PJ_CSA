@@ -84,18 +84,22 @@
            
 		<h1><center>ข้อมูลงานโค</center></h1>
 		<hr>
-		
+		 <div class="row demo-row">
+        <div class="col-xs-12">
+        
+          <div class="container">
 <div class="panel panel-primary">
 		<div class="panel-heading">
 	        <h4 class="panel-title" style="font-size: 25px;">รายชื่องานโค</h4>
 	   	</div>
 		<div class="panel-body">
-		<form action='' method='post'>
-		<c:forEach items="${festivitylist }" var="festivity">
+		<form action='' method='post'>		
 		  	<table class="table table-striped table-hover  table-bordered">
 		  	
 		  		<button type="button" class="btn btn-success fui-plus-circle"><a href="newfestivity"><font color="white"> เพิ่มงานโค</font></a></button>
 				<thead>
+				
+					
 					<tr>
 						<th><center>ลำดับที่</center></th>
 				    	<th><center>ชื่องาน</center></th>
@@ -108,28 +112,34 @@
 				      </tr>
 				    </thead>
 				    <tbody>
-				      <tr>
-				    <td><div align="center">${festivity.type.name}</div></td>
+				    
+				    <c:forEach items="${festivitylist }" var="festivity" varStatus="loop">
+				    <tr>
+				    <td><div align="center">${loop.index+1}</div></td>
 				    <td><div align="center">${festivity.title}</div></td>
-				    <td><div align="center">${festivity.gene}</div></td>
+				    <td><div align="center">${festivity.type.name}</div></td>				    				    
 				    <td><div align="center">${festivity.SWork}</div></td>
 				    <td><div class="col-md-offset-3"><input type='checkbox' checked data-toggle='switch' id='custom-switch-01' /></div></td>
-				        <td><center><a href="#"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit">
+			        <td><center><a><button type="button" class="btn btn-primary" onclick="onClickEdit('${festivity.no}','1')">
 				        	<span class="glyphicon glyphicon-pencil"></span></button></a></center></td>
-				        <td><center><a><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete">
+				        	
+			        <td><center><a><button type="button" class="btn btn-danger" onclick="onClickDelete('${festivity.no}','1')">
 				        	<span class="glyphicon glyphicon-remove"></span></button></a></center></td>
-				        <td><center><a href="addfes_sh"><button type="button" class="btn btn-success">
+			        <td><center><a href="addfes_sh?id=${festivity.no}"><button type="button" class="btn btn-success">
 				        	<span class="glyphicon glyphicon-plus-sign"></span></button></a></center></td>
 				      </tr>
+				      </c:forEach>
 
 				</tbody>
 			</table>
 		  
-		   	</c:forEach>
+		   	
 		   	</form>
 		</div>
 	</div>
 </div> <!-- end container -->
+</div>
+</div>
 
 			
 			<ul class="nav navbar-nav navbar-right">
@@ -142,7 +152,7 @@
 
 
 
-<div class="container">
+	<div class="container">
 		<!-- modal -->
 		<div id="log" class="modal fade">
 			<div class="modal-dialog">
@@ -152,7 +162,223 @@
 			</div>
 		</div>
 		<!-- modal -->
+		
+		<!-- modal -->
+		<div id="modal-delete" class="modal fade">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-hidden="true"></button>
+						<h3 class="modal-title">ลบงานโค</h3>						
+					</div>
+					<div class="modal-body">
+						<h4 class="control">คุณต้องการที่จะลบข้อมูลนี้ใช่หรือไม่</h4>						
+						<input type="text" id="delete-id" readonly class="form-control hide"/>
+					</div>
+					<div class="modal-footer">						
+						<button type="button" class="btn btn-default"  data-dismiss="modal">ปิด</button>	
+						<button type="submit" class="btn btn-danger" id="btn_delete">ลบ</button>					
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- modal -->
+		
+		<!-- modal -->
+		<div id="modal-edit" class="modal fade">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-hidden="true"></button>
+						<h3 class="modal-title">แก้ไขข้อมูลงานโค</h3>
+					</div>
+					
+						<div class="modal-body">
+							<form:form action="" commandName="festivity" id="festivity">
+							 <div class="row form-group">
+							 	<div class="col-md-offset-2 col-md-3">
+							 		<h4>ประเภทงาน :</h4>
+							 	</div>
+							 	<div class="col-md-5">		
+							 		 <select id="typeids"  class="form-control">
+								 	 <c:forEach items="${typeList }" var="type" varStatus="loop">
+								 	 	<option value="${type.key}">${type.value}</option>
+								 	 </c:forEach>			 	  
+								 	 </select>	
+								 	 					 				 		    
+							 	</div>
+							 </div>
+							 
+							 <div class="row form-group">
+							 	<div class="col-md-offset-2 col-md-3">
+							 		<h4>ชื่องาน :</h4>
+							 	</div>
+							 	<div class="col-md-5">			 		
+							 		<form:input path="title" id="title" class="form-control"  placeholder="ชื่องาน"/>
+							 	</div>
+							 </div>
+							 
+							 <div class="row form-group">
+							 	<div class="col-md-offset-2 col-md-3">
+							 		<h4>สายพันธุ์ :</h4>
+							 	</div>
+							 	<div class="col-md-5">
+							 		
+									<form:select path="gene" id="gene" class="form-control">
+										<form:options items="${genList}" />
+									</form:select>			 	
+								</div>
+							</div>
+							
+							<div class="row form-group">
+								<div class="col-md-offset-2 col-md-3">
+									<h4>วันเริ่มงาน :</h4>
+								</div>
+								<div class="col-md-5">					
+									<form:input path="SWork" id="SWork" class="form-control" type="date"/>
+								</div>
+							</div>
+							
+							<div class="row form-group">
+								<div class="col-md-offset-2 col-md-3">
+									<h4>วันสิ้นสุดงาน :</h4>
+								</div>
+								<div class="col-md-5">
+									<form:input path="EWork" id="EWork" class="form-control" type="date"/>
+								</div>
+							</div>
+							
+							<div class="row form-group">
+								<div class="col-md-offset-2 col-md-3">
+									<h4>เริ่มรับข้อมูล :</h4>
+								</div>
+								<div class="col-md-5">
+									<form:input path="SData" id="SData" class="form-control" type="date"/>
+								</div>
+							</div>
+							
+							<div class="row form-group">
+								<div class="col-md-offset-2 col-md-3">
+									<h4>สิ้นสุดรับข้อมูล :</h4>
+								</div>
+								<div class="col-md-5">
+									<form:input path="EData" id="EData" class="form-control" type="date"/>
+								</div>
+							</div>
+							
+							<div class="row form-group">
+								<div class="col-md-offset-2 col-md-3">
+									<h4>โลโก้งาน :</h4>
+								</div>
+								<div class="col-md-5">
+									<input type="file" id="tel" class="form-control" />
+									<form:input path="logo" id="logo" class="form-control hide" />
+								</div>
+							</div>
+							
+							<div class="row form-group">
+								<div class="col-md-offset-2 col-md-3">
+									<h4>โปสเตอร์งาน :</h4>
+								</div>
+								<div class="col-md-5">
+									<input type="file" id="tel" class="form-control" />
+									<form:input path="poster" id="poster" class="form-control hide" />
+								</div>
+							</div>
+							
+							<div class="row form-group">
+								<div class="col-md-offset-2 col-md-3">
+									<h4>รายละเอียดงาน :</h4>
+								</div>
+								<div class="col-md-5">					
+									<form:textarea path="details" id="details" class="form-control" />				
+								</div>
+							</div>
+							
+							<div class="row form-group">
+								<div class="col-md-offset-2 col-md-3">
+									<h4>ติดต่อสอบถาม :</h4>
+								</div>
+								<div class="col-md-5">					
+									<form:input path="location" id="location" class="form-control" />
+									<form:input path="memberId" id="memberId" class="form-control hide" />
+								</div>
+							</div>
+							</form:form>
+						</div>
+						
+						<div class="modal-footer">
+						
+						<button type="button" class="btn btn-default"  data-dismiss="modal">ปิด</button>
+						<button type="submit" class="btn btn-primary" id="btn_save">บันทึก</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- modal -->
+		
 	</div>
+	
+	<script type="text/javascript">
+		
+		function deleteFestivity(url, params, compName) {
+	        $.post(url, params, function(data) {
+	        	if(data=="success")
+	    		{
+	    			alert( "ลบข้อมูลเรียบร้อย" );
+	   	  			$("#modal-delete").modal('hide');
+	   	  			window.location.reload();
+	    		}
+	        	else
+	    		{
+	        		alert( "ไม่สามารถลบข้อมูลได้" );
+	    		}
+	        });
+		}
+	    
+	    function onClickDelete(val){
+	        $("#modal-delete").modal('show');
+	        $("#delete-id").val(val);
+	    }        
+	    
+	    $( "#btn_delete" ).click(function() {
+	    	deleteFestivity('/PJ_CSA/api/deleteFestivity', {'id': $("#delete-id").val()}, 'modal-delete');
+	   	});
+	    
+	    function getFestivityInfo(url, params, compName) {
+	    	
+	    	debugger;
+	    	
+		    $.post(url, params, function(data) {
+		    	debugger;
+		    	/*$("#"+ compName +"no").val(params.id);
+		    	$("#"+ compName +"CName").val(data.cattledetail.cname);
+		    	$("#"+ compName +"CBirth").val(data.cattledetail.cbirth);
+		    	$("#"+ compName +"CAge").val(data.cattledetail.cage);
+		    	$("#"+ compName +"CSex").val(data.cattledetail.csex);
+		    	//$("#"+ compName +"CColor").val(data.cattledetail.ccolor);
+		    	$("#"+ compName +"CGen").val(data.cattledetail.cgen);
+		    	$("#"+ compName +"CPic").val(data.cattledetail.cpic);
+		    	$("#"+ compName +"father").val(data.cattledetail.father);
+		    	$("#"+ compName +"mother").val(data.cattledetail.mother);
+		    	$("#"+ compName +"memberId").val(data.cattledetail.memberId);
+		    	$("#"+ compName +"devoloper").val(data.cattledetail.devoloper);
+		    	*/
+		    	//$("#typeid").val("1");
+		    	
+		    	
+  			    });
+		}
+	    
+	    function onClickEdit(val,type){        	
+	    	getFestivityInfo('/PJ_CSA/api/getFestivity', {'id': val}, '');
+	        $("#modal-edit").modal('show');
+	        $("#typeid").val(type);
+	    }
+	    
+	</script>
 	
 	<footer class="footer">
 	<div class="container">

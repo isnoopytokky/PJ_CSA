@@ -26,10 +26,10 @@ public class Festivity implements java.io.Serializable {
 	private Type type;
 	private String title;
 	private String gene;
-	private Date SWork;
-	private Date EWork;
-	private Date SData;
-	private Date EData;
+	private String SWork;
+	private String EWork;
+	private String SData;
+	private String EData;
 	private String logo;
 	private String poster;
 	private String details;
@@ -39,7 +39,7 @@ public class Festivity implements java.io.Serializable {
 	public Festivity() {
 	}
 
-	public Festivity(Type type, String title, String gene, Date SWork, Date EWork, Date SData, Date EData, String logo,
+	public Festivity(Type type, String title, String gene, String SWork, String EWork, String SData, String EData, String logo,
 			String poster, String details, String location, Integer memberId) {
 		this.type = type;
 		this.title = title;
@@ -94,43 +94,39 @@ public class Festivity implements java.io.Serializable {
 		this.gene = gene;
 	}
 
-	@Temporal(TemporalType.DATE)
-	@Column(name = "s_work", length = 10)
-	public Date getSWork() {
+	@Column(name = "s_work", length = 50)	
+	public String getSWork() {
 		return this.SWork;
 	}
 
-	public void setSWork(Date SWork) {
+	public void setSWork(String SWork) {
 		this.SWork = SWork;
 	}
-
-	@Temporal(TemporalType.DATE)
-	@Column(name = "e_work", length = 10)
-	public Date getEWork() {
+	
+	@Column(name = "e_work", length = 50)
+	public String getEWork() {
 		return this.EWork;
 	}
 
-	public void setEWork(Date EWork) {
+	public void setEWork(String EWork) {
 		this.EWork = EWork;
 	}
-
-	@Temporal(TemporalType.DATE)
-	@Column(name = "s_data", length = 10)
-	public Date getSData() {
+	
+	@Column(name = "s_data", length = 50)
+	public String getSData() {
 		return this.SData;
 	}
 
-	public void setSData(Date SData) {
+	public void setSData(String SData) {
 		this.SData = SData;
 	}
-
-	@Temporal(TemporalType.DATE)
-	@Column(name = "e_data", length = 10)
-	public Date getEData() {
+	
+	@Column(name = "e_data", length = 50)
+	public String getEData() {
 		return this.EData;
 	}
 
-	public void setEData(Date EData) {
+	public void setEData(String EData) {
 		this.EData = EData;
 	}
 

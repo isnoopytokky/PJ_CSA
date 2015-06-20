@@ -102,6 +102,7 @@
 				      </tr>
 				    </thead>
 				    <tbody>
+				    <c:forEach items="${festivitylist1}" var="festivity" varStatus="loop">
 				      <tr>
 				    <td><div align="center">${festivity.type.name}</div></td>
 				    <td><div align="center">${festivity.title}</div></td>
@@ -111,6 +112,7 @@
 				        <td><div align="center"><a href="mem_addfes_sh"><button type="button" class="btn btn-success">
 				        	<span class="glyphicon glyphicon-plus-sign"></span></button></a></div></td>
 				      </tr>
+				      </c:forEach>
 
 				</tbody>
 			</table>
@@ -130,6 +132,7 @@
 				      </tr>
 				    </thead>
 				    <tbody>
+				    <c:forEach items="${festivitylist2}" var="festivity" varStatus="loop">
 				      <tr>
 				    <td><div align="center">${festivity.type.name}</div></td>
 				    <td><div align="center">${festivity.title}</div></td>
@@ -138,7 +141,7 @@
 				        <td><div align="center"><a href="mem_addfes_2"><button type="button" class="btn btn-success">
 				        	<span class="glyphicon glyphicon-plus-sign"></span></button></a></div></td>
 				      </tr>
-
+					</c:forEach>
 				</tbody>
 			</table>
 			
@@ -157,6 +160,7 @@
 				      </tr>
 				    </thead>
 				    <tbody>
+				      <c:forEach items="${festivitylist3}" var="festivity" varStatus="loop">
 				      <tr>
 				    <td><div align="center">${festivity.type.name}</div></td>
 				    <td><div align="center">${festivity.title}</div></td>
@@ -166,6 +170,7 @@
 				        <td><div align="center"><a href="mem_addfes_3"><button type="button" class="btn btn-success">
 				        	<span class="glyphicon glyphicon-plus-sign"></span></button></a></div></td>
 				      </tr>
+				      </c:forEach>
 
 				</tbody>
 			</table>

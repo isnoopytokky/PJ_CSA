@@ -182,7 +182,9 @@ public class MemberController {
 	public ModelAndView festivity(Map<String, Object> map) {
 		Festivity festivity = new Festivity();//เธชเน�เธ�เธ�เน�เธฒเน�เธกเน€เธ”เธฅเน�เธ�
 		map.put("festivity", festivity);
-		map.put("festivitylist",festivityService.getAdmin1());
+		map.put("festivitylist1",festivityService.getAdmin1());
+		map.put("festivitylist2",festivityService.getAdmin1());
+		map.put("festivitylist3",festivityService.getAdmin1());
 		
 		ModelAndView model = new ModelAndView("/csa/member/festivity_mem");
 		return model;

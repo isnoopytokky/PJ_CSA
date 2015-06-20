@@ -3,6 +3,7 @@ package csa.spring.controller;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -34,13 +35,29 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 
+
+
+
+
+
+
+
+
+
+
 import csa.myapp.MD5;
+import csa.spring.model.CattleDetails;
+import csa.spring.model.ColorType;
 import csa.spring.model.Festivity;
+import csa.spring.model.GenType;
 import csa.spring.model.Member;
 import csa.spring.model.StatusNo;
+import csa.spring.service.ColorTypeService;
 import csa.spring.service.FestivityService;
+import csa.spring.service.GenTypeService;
 import csa.spring.service.MemberService;
 import csa.spring.service.StatusNoService;
+import csa.spring.service.TypeService;
 
 
 
@@ -55,6 +72,16 @@ public class MainController {
 	
 	@Autowired
 	StatusNoService statusnoService;
+	
+	@Autowired
+	TypeService typeService;
+	
+	@Autowired
+	ColorTypeService colorTypeService;
+	
+	@Autowired
+	GenTypeService genTypeService;
+	
 	
 	MD5 md5=new MD5();
 	
@@ -110,9 +137,48 @@ public class MainController {
 	///////////////////////////mapเธซเธ�เน�เธฒadmin//////////////////////////////
 	
 	@RequestMapping("/setlist")///เธ•เธฑเน�เธ�เธ�เน�เธฒ
-	public ModelAndView setlist() {
+	public ModelAndView setlist(Map<String, Object> map) {
+		
+		ColorType colorType = new ColorType();
+		map.put("colorType", colorType);
+		map.put("colortypelist",colorTypeService.getAllColorType());
+		
+		GenType genType = new GenType();
+		map.put("genType", genType);
+		map.put("genTypelist",genTypeService.getAllGenType());
+		
+		
 		ModelAndView model = new ModelAndView("/csa/admin/setlist");
 		return model;
+	}
+	
+	@RequestMapping(value="/api/addGen",method=RequestMethod.POST)
+	@ResponseBody
+	public String addGen(HttpSession session,@ModelAttribute GenType genType) {				
+		genTypeService.add(genType);			
+		return "success";
+	}
+	@RequestMapping(value = "/api/deleteGen", method = RequestMethod.POST) 
+	@ResponseBody  
+	public  String deleteGen(@RequestParam("id") Integer id) 
+	{	
+		genTypeService.delete(id);		
+        return "success";  
+	}
+	
+	@RequestMapping(value="/api/addColor",method=RequestMethod.POST)
+	@ResponseBody
+	public String addColor(HttpSession session,@ModelAttribute ColorType colorType) {				
+		colorTypeService.add(colorType);			
+		return "success";
+	}
+	
+	@RequestMapping(value = "/api/deleteColor", method = RequestMethod.POST) 
+	@ResponseBody  
+	public  String deleteColor(@RequestParam("id") Integer id) 
+	{	
+		colorTypeService.delete(id);		
+        return "success";  
 	}
 	
 	// Begin user menu 
@@ -142,11 +208,32 @@ public class MainController {
 	
 	// End user menu
 	
-	@RequestMapping("/festivity")///เธ�เธฒเธ�เธ�เธฒเน�เธ�
+	@RequestMapping("/work")///เธ�เธฒเธ�เธ�เธฒเน�เธ�
 	public ModelAndView festivity(Map<String, Object> map) {
 		Festivity festivity = new Festivity();//เธชเน�เธ�เธ�เน�เธฒเน�เธกเน€เธ”เธฅเน�เธ�
 		map.put("festivity", festivity);
-		map.put("festivitylist",festivityService.getAdmin1());
+		map.put("festivitylist",festivityService.getAllFestivity());
+		
+		Map<String,String> genList = new TreeMap<String, String>();
+		Map<String,String> sexList = new TreeMap<String, String>();	
+		Map<String,String> typeList = new TreeMap<String, String>();
+		
+		
+		typeList.put("0","");
+		typeList.put("1","ประกวดโค");
+		typeList.put("2","ประมูลโคพันธุ์");
+		typeList.put("3","ประมูลโคขุน");
+		
+		genList.put("","");
+		genList.put("วากิว","วากิว");
+		genList.put("กำแพงแสน","กำแพงแสน");
+		
+		sexList.put("ผู้","ผู้");
+		sexList.put("เมีย","เมีย");
+		map.put("festivity",festivity);
+		map.put("genList",genList);
+		map.put("sexList",sexList);
+		map.put("typeList",typeList);
 		
 		ModelAndView model = new ModelAndView("/csa/admin/festivity");
 		return model;
@@ -186,10 +273,90 @@ public class MainController {
 	}
 	
 	@RequestMapping("/newfestivity")////เน€เธ�เธดเน�เธกเธ�เธฒเธ�เน�เธ�
-	public ModelAndView newfestivity(){
+	public ModelAndView newfestivity(Map<String, Object> map){
+		//geneList
+		Festivity festivity =new Festivity();
+		Map<String,String> genList = new TreeMap<String, String>();
+		Map<String,String> sexList = new TreeMap<String, String>();	
+		Map<String,String> typeList = new TreeMap<String, String>();
+		
+		
+		typeList.put("0","");
+		typeList.put("1","ประกวดโค");
+		typeList.put("2","ประมูลโคพันธุ์");
+		typeList.put("3","ประมูลโคขุน");
+		
+		genList.put("","");
+		genList.put("วากิว","วากิว");
+		genList.put("กำแพงแสน","กำแพงแสน");
+		
+		sexList.put("ผู้","ผู้");
+		sexList.put("เมีย","เมีย");
+		map.put("festivity",festivity);
+		map.put("genList",genList);
+		map.put("sexList",sexList);
+		map.put("typeList",typeList);
+		
 		ModelAndView model = new ModelAndView("/csa/admin/newfestivity");
 		return model;
 	}
+	
+	@RequestMapping(value="/api/addFestivity",method=RequestMethod.POST)
+	@ResponseBody
+	public String addFestivity(HttpSession session,@ModelAttribute Festivity festivity,@RequestParam("flg") Integer flg) {	
+		Integer userid = (Integer) session.getAttribute("userid");		
+		festivity.setMemberId(userid);
+		festivity.setType(typeService.getType(flg));
+		festivityService.add(festivity);			
+		return "success";
+	}
+	
+	@RequestMapping(value = "/api/deleteFestivity", method = RequestMethod.POST) 
+	@ResponseBody  
+	public  String deleteFestivity(@RequestParam("id") Integer id) 
+	{	
+		festivityService.delete(id);		
+        return "success";  
+	}
+	
+	@RequestMapping(value="/api/updateFestivity",method=RequestMethod.POST)
+	@ResponseBody
+	public String updateFestivity(HttpSession session,@ModelAttribute Festivity festivity,@RequestParam("flg") Integer flg) {	
+		Integer userid = (Integer) session.getAttribute("userid");
+		festivity.setMemberId(userid);
+		festivity.setType(typeService.getType(flg));
+		festivityService.edit(festivity);			
+		return "success";
+	}
+	
+	@RequestMapping(value = "/api/getFestivity", method = RequestMethod.POST) 
+	@ResponseBody  
+	public  Map<String, ? extends Object> getFestivity(@RequestParam("id") Integer id) 
+	{
+		Map<String,Object> model = new HashMap<String, Object>();
+		
+		Festivity festivityResult=new Festivity();
+		Festivity festivity =new Festivity();
+		festivity = festivityService.getFestivity(id);
+			
+		festivityResult.setTitle(festivity.getTitle());
+//		festivityResult.setCBirth(festivity.getCBirth());
+//		festivityResult.setCAge(festivity.getCAge());
+//		festivityResult.setCSex(festivity.getCSex());
+//		festivityResult.setCColor(festivity.getCColor());
+//		festivityResult.setCGen(festivity.getCGen());
+//		festivityResult.setCPic(festivity.getCPic());
+//		festivityResult.setFather(festivity.getFather());
+//		festivityResult.setMother(festivity.getMother());
+//		festivityResult.setDevoloper(festivity.getDevoloper());
+//		festivityResult.setMemberId(festivity.getMemberId());
+		 
+
+		model.put("festivity", festivityResult);	
+		
+        return model;  
+	}
+	
 	
 	
 	@RequestMapping(value="register",method=RequestMethod.POST)

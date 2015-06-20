@@ -100,125 +100,130 @@
 	   	</div>
 		<div class="panel-body">
 		 
-		
-            
-           <div class="row form-group">
-							<div class="col-md-offset-1 col-md-2">
-								<h4>ประเภทงาน :</h4>
-							</div>
-							<div class="col-md-7">
-				<select class="form-control" name="gene" id="gene" value=""  required>
-                <option></option>
-                <option>ประกวดโค</option>
-                <option>ประมูลโคพันธุ์</option>
-                <option>ประมูลโคขุน</option>
-           		</select>    
-							</div>
-						</div>
-						
+			 <form:form action="" commandName="festivity" id="festivity">
 			 <div class="row form-group">
-							<div class="col-md-offset-1 col-md-2">
-								<h4>ชื่องาน :</h4>
-							</div>
-							<div class="col-md-7">
-								<input type="tel" id="tel" class="form-control" placeholder="ชื่องาน" required/>
-							</div>
-						</div>
-			
+			 	<div class="col-md-offset-1 col-md-2">
+			 		<h4>ประเภทงาน :</h4>
+			 	</div>
+			 	<div class="col-md-7">
+			 	 
+			 	 <select id="typeids"  class="form-control">
+			 	 <c:forEach items="${typeList }" var="type" varStatus="loop">
+			 	 	<option value="${type.key}">${type.value}</option>
+			 	 </c:forEach>			 	  
+			 	 </select>	
+			 	 
+			 	 
+			 	 	    
+			 	</div>
+			 </div>
+			 
 			 <div class="row form-group">
-							<div class="col-md-offset-1 col-md-2">
-								<h4>สายพันธุ์ :</h4>
-							</div>
-							<div class="col-md-7">
-				<select class="form-control" name="gene" id="gene" value=""  required>
-                <option></option>
-                <option>Hydrogen</option>
-                <option>Helium</option>
-                <option>Lithium</option>
-                <option>Beryllium</option>
-                <option>Boron</option>
-                <option>Carbon</option>
-                <option>Nitrogen</option>
-           		</select>    
-							</div>
-						</div>
-			
+			 	<div class="col-md-offset-1 col-md-2">
+			 		<h4>ชื่องาน :</h4>
+			 	</div>
+			 	<div class="col-md-7">			 		
+			 		<form:input path="title" id="title" class="form-control"  placeholder="ชื่องาน"/>
+			 	</div>
+			 </div>
+			 
 			 <div class="row form-group">
-							<div class="col-md-offset-1 col-md-2">
-								<h4>วันเริ่มงาน :</h4>
-							</div>
-							<div class="col-md-7">
-								<input type="date" id="tel" class="form-control" />
-							</div>
-						</div>
-			
+			 	<div class="col-md-offset-1 col-md-2">
+			 		<h4>สายพันธุ์ :</h4>
+			 	</div>
+			 	<div class="col-md-7">
+			 		
+		 		<form:select path="gene" id="gene" class="form-control">
+		 			<form:options items="${genList}" />
+		 		</form:select>			 	
+				</div>
+			</div>
+	
 			<div class="row form-group">
-							<div class="col-md-offset-1 col-md-2">
-								<h4>วันสิ้นสุดงาน :</h4>
-							</div>
-							<div class="col-md-7">
-								<input type="date" id="tel" class="form-control" />
-							</div>
-						</div>
-			
+				<div class="col-md-offset-1 col-md-2">
+					<h4>วันเริ่มงาน :</h4>
+				</div>
+				<div class="col-md-7">					
+					<form:input path="SWork" id="SWork" class="form-control" type="date"/>
+				</div>
+			</div>
+	
 			<div class="row form-group">
-							<div class="col-md-offset-1 col-md-2">
-								<h4>เริ่มรับข้อมูล :</h4>
-							</div>
-							<div class="col-md-7">
-								<input type="date" id="tel" class="form-control" />
-							</div>
-						</div>
-						
+				<div class="col-md-offset-1 col-md-2">
+					<h4>วันสิ้นสุดงาน :</h4>
+				</div>
+				<div class="col-md-7">
+					<form:input path="EWork" id="EWork" class="form-control" type="date"/>
+				</div>
+			</div>
+	
 			<div class="row form-group">
-							<div class="col-md-offset-1 col-md-2">
-								<h4>สิ้นสุดรับข้อมูล :</h4>
-							</div>
-							<div class="col-md-7">
-								<input type="date" id="tel" class="form-control" />
-							</div>
-						</div>
-			
+				<div class="col-md-offset-1 col-md-2">
+					<h4>เริ่มรับข้อมูล :</h4>
+				</div>
+				<div class="col-md-7">
+					<form:input path="SData" id="SData" class="form-control" type="date"/>
+				</div>
+			</div>
+	
 			<div class="row form-group">
-							<div class="col-md-offset-1 col-md-2">
-								<h4>โลโก้งาน :</h4>
-							</div>
-							<div class="col-md-7">
-								<input type="file" id="tel" class="form-control" />
-							</div>
-						</div>
-						
+				<div class="col-md-offset-1 col-md-2">
+					<h4>สิ้นสุดรับข้อมูล :</h4>
+				</div>
+				<div class="col-md-7">
+					<form:input path="EData" id="EData" class="form-control" type="date"/>
+				</div>
+			</div>
+	
 			<div class="row form-group">
-							<div class="col-md-offset-1 col-md-2">
-								<h4>โปสเตอร์งาน :</h4>
-							</div>
-							<div class="col-md-7">
-								<input type="file" id="tel" class="form-control" />
-							</div>
-						</div>
-						
+				<div class="col-md-offset-1 col-md-2">
+					<h4>โลโก้งาน :</h4>
+				</div>
+				<div class="col-md-7">
+					<input type="file" id="tel" class="form-control" />
+					<form:input path="logo" id="logo" class="form-control hide" />
+				</div>
+			</div>
+	
 			<div class="row form-group">
-							<div class="col-md-offset-1 col-md-2">
-								<h4>รายละเอียดงาน :</h4>
-							</div>
-							<div class="col-md-7">
-								<textarea id="tel" class="form-control" required />
-								</textarea>
-							</div>
-						</div>
-						
-			 <div class="row form-group">
-							<div class="col-md-offset-1 col-md-2">
-								<h4>ติดต่อสอบถาม :</h4>
-							</div>
-							<div class="col-md-7">
-								<input type="tel" id="tel" class="form-control" placeholder="ติดต่อสอบถาม" required/>
-							</div>
-						</div>
-						
-						<button type="submit" name="submit" id="submit" class="btn btn-success pull-left">จัดงาน</button>  |
-						<a href="work"><button type="button" class="btn btn-danger fui-plus-circle">ย้อนกลับ</button></a>
-						
+				<div class="col-md-offset-1 col-md-2">
+					<h4>โปสเตอร์งาน :</h4>
+				</div>
+				<div class="col-md-7">
+					<input type="file" id="tel" class="form-control" />
+					<form:input path="poster" id="poster" class="form-control hide" />
+				</div>
+			</div>
+	
+			<div class="row form-group">
+				<div class="col-md-offset-1 col-md-2">
+					<h4>รายละเอียดงาน :</h4>
+				</div>
+				<div class="col-md-7">					
+					<form:textarea path="details" id="details" class="form-control" />				
+				</div>
+			</div>
+	
+			<div class="row form-group">
+				<div class="col-md-offset-1 col-md-2">
+					<h4>ติดต่อสอบถาม :</h4>
+				</div>
+				<div class="col-md-7">					
+					<form:input path="location" id="location" class="form-control" />
+					<form:input path="memberId" id="memberId" class="form-control hide" />
+				</div>
+			</div>
+			</form:form>
+	
+			<div class="row">
+				<div class="col-md-12 text-center">
+					
+					<button type="button" name="btn_save" id="btn_save" class="btn btn-success">จัดงาน</button>					
+					<a href="work">
+						<button type="button" class="btn btn-danger fui-plus-circle">ย้อนกลับ</button>
+					</a>
+				</div>
+			</div>
                     
             </div>
             
@@ -226,7 +231,34 @@
             </div>
          </div>
         
+         <script type="text/javascript">
          
+         
+         $( "#btn_save" ).click(function() { 
+         	var msg ="";
+         	var typeid = $("#typeids").val();
+         	
+         	 
+         	if(msg!=""){
+         		alert(msg);
+         	}
+         	else
+        		{
+ 	        	$.ajax({
+ 					url:"/PJ_CSA/api/addFestivity",
+ 					encoding:"UTF-8",
+ 					method:"POST",
+ 					data:$("#festivity").serialize() + "&flg=" + typeid
+ 				}).done(function(a){
+ 					debugger;
+ 					alert("เพิ่มเรียบร้อย");
+ 					window.location.href = ("work");
+ 				});
+        		}
+         	
+        	});
+         
+         </script>
 
 
 
