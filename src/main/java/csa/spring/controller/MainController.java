@@ -45,6 +45,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 
+
 import csa.myapp.MD5;
 import csa.spring.model.CattleDetails;
 import csa.spring.model.ColorType;
@@ -52,6 +53,7 @@ import csa.spring.model.Festivity;
 import csa.spring.model.GenType;
 import csa.spring.model.Member;
 import csa.spring.model.StatusNo;
+import csa.spring.model.Type;
 import csa.spring.service.ColorTypeService;
 import csa.spring.service.FestivityService;
 import csa.spring.service.GenTypeService;
@@ -85,11 +87,11 @@ public class MainController {
 	
 	MD5 md5=new MD5();
 	
-	@RequestMapping("/edit_profile")//เน�เธ�เน�เน�เธ�เธ�เน�เธญเธกเธนเธฅเธชเน�เธงเธ�เธ•เธฑเธง
+	@RequestMapping("/edit_profile")//เน€เธ�๏ฟฝเน€เธ�๏ฟฝเน€เธ�๏ฟฝเน€เธ�๏ฟฝเน€เธ�๏ฟฝเน€เธ�๏ฟฝเน€เธ�๏ฟฝเน€เธ�เธ�เน€เธ�เธ�เน€เธ�เธ�เน€เธ�เธ…เน€เธ�เธ�เน€เธ�๏ฟฝเน€เธ�เธ�เน€เธ�๏ฟฝเน€เธ�โ€ขเน€เธ�เธ‘เน€เธ�เธ�
 	public ModelAndView member(Map<String, Object> map) {
-		Member member = new Member();//เธชเน�เธ�เธ�เน�เธฒเน�เธกเน€เธ”เธฅเน�เธ�
+		Member member = new Member();//เน€เธ�เธ�เน€เธ�๏ฟฝเน€เธ�๏ฟฝเน€เธ�๏ฟฝเน€เธ�๏ฟฝเน€เธ�เธ’เน€เธ�๏ฟฝเน€เธ�เธ�เน€เธ�โ�ฌเน€เธ�โ€�เน€เธ�เธ…เน€เธ�๏ฟฝเน€เธ�๏ฟฝ
 		map.put("member", member);
-		map.put("adminlist",memberService.getAdmin()); //เธ•เธฑเธงเน�เธ�เธฃadminlistเธชเน�เธ�เน�เธ�เธซเธ�เน�เธฒjspedit_profile
+		map.put("adminlist",memberService.getAdmin()); //เน€เธ�โ€ขเน€เธ�เธ‘เน€เธ�เธ�เน€เธ�๏ฟฝเน€เธ�๏ฟฝเน€เธ�เธ�adminlistเน€เธ�เธ�เน€เธ�๏ฟฝเน€เธ�๏ฟฝเน€เธ�๏ฟฝเน€เธ�๏ฟฝเน€เธ�เธ�เน€เธ�๏ฟฝเน€เธ�๏ฟฝเน€เธ�เธ’jspedit_profile
 		
 		ModelAndView model = new ModelAndView("/csa/admin/edit_profile");
 		return model;
@@ -97,7 +99,7 @@ public class MainController {
 	
 	@RequestMapping("/")
 	public ModelAndView home(Map<String, Object> map) {
-		Member member = new Member();//เธชเน�เธ�เธ�เน�เธฒเน�เธกเน€เธ”เธฅเน�เธ�
+		Member member = new Member();//เน€เธ�เธ�เน€เธ�๏ฟฝเน€เธ�๏ฟฝเน€เธ�๏ฟฝเน€เธ�๏ฟฝเน€เธ�เธ’เน€เธ�๏ฟฝเน€เธ�เธ�เน€เธ�โ�ฌเน€เธ�โ€�เน€เธ�เธ…เน€เธ�๏ฟฝเน€เธ�๏ฟฝ
 		map.put("member", member);
 		ModelAndView model = new ModelAndView("index");
 		return model;
@@ -107,26 +109,26 @@ public class MainController {
 	@RequestMapping("/index")
 	public ModelAndView index(Map<String, Object> map) {
 		Member member = new Member();
-		map.put("member", member);//เธชเน�เธ�เธ�เน�เธฒเน�เธ�เน�เธ�เน� commandName
+		map.put("member", member);//เน€เธ�เธ�เน€เธ�๏ฟฝเน€เธ�๏ฟฝเน€เธ�๏ฟฝเน€เธ�๏ฟฝเน€เธ�เธ’เน€เธ�๏ฟฝเน€เธ�๏ฟฝเน€เธ�๏ฟฝเน€เธ�๏ฟฝเน€เธ�๏ฟฝ commandName
 		ModelAndView model = new ModelAndView("index");
 		return model;
 		
 	}
 	
 	
-	@RequestMapping("/news")///เธ�เน�เธฒเธงเธ�เธฃเธฐเธ�เธฒเธจ
+	@RequestMapping("/news")///เน€เธ�๏ฟฝเน€เธ�๏ฟฝเน€เธ�เธ’เน€เธ�เธ�เน€เธ�๏ฟฝเน€เธ�เธ�เน€เธ�เธ�เน€เธ�๏ฟฝเน€เธ�เธ’เน€เธ�เธ�
 	public ModelAndView news() {
 		ModelAndView model = new ModelAndView("news");
 		return model;
 	}
 	
-	@RequestMapping("/home_report")///เธซเธ�เน�เธฒเธฃเธฒเธขเธ�เธฒเธ�เธ�เธฅ
+	@RequestMapping("/home_report")///เน€เธ�เธ�เน€เธ�๏ฟฝเน€เธ�๏ฟฝเน€เธ�เธ’เน€เธ�เธ�เน€เธ�เธ’เน€เธ�เธ�เน€เธ�๏ฟฝเน€เธ�เธ’เน€เธ�๏ฟฝเน€เธ�๏ฟฝเน€เธ�เธ…
 	public ModelAndView homereport() {
 		ModelAndView model = new ModelAndView("home_report");
 		return model;
 	}
 	
-	@RequestMapping("/about")///เธซเธ�เน�เธฒเน€เธ�เธตเน�เธขเธงเธ�เธฑเธ�เน€เธฃเธฒ
+	@RequestMapping("/about")///เน€เธ�เธ�เน€เธ�๏ฟฝเน€เธ�๏ฟฝเน€เธ�เธ’เน€เธ�โ�ฌเน€เธ�๏ฟฝเน€เธ�เธ•เน€เธ�๏ฟฝเน€เธ�เธ�เน€เธ�เธ�เน€เธ�๏ฟฝเน€เธ�เธ‘เน€เธ�๏ฟฝเน€เธ�โ�ฌเน€เธ�เธ�เน€เธ�เธ’
 	public ModelAndView abouthome() {
 		ModelAndView model = new ModelAndView("about");
 		return model;
@@ -134,9 +136,9 @@ public class MainController {
 	
 	
 	
-	///////////////////////////mapเธซเธ�เน�เธฒadmin//////////////////////////////
+	///////////////////////////mapเน€เธ�เธ�เน€เธ�๏ฟฝเน€เธ�๏ฟฝเน€เธ�เธ’admin//////////////////////////////
 	
-	@RequestMapping("/setlist")///เธ•เธฑเน�เธ�เธ�เน�เธฒ
+	@RequestMapping("/setlist")///เน€เธ�โ€ขเน€เธ�เธ‘เน€เธ�๏ฟฝเน€เธ�๏ฟฝเน€เธ�๏ฟฝเน€เธ�๏ฟฝเน€เธ�เธ’
 	public ModelAndView setlist(Map<String, Object> map) {
 		
 		ColorType colorType = new ColorType();
@@ -182,10 +184,10 @@ public class MainController {
 	}
 	
 	// Begin user menu 
-	@RequestMapping("/user")/////เธซเธ�เน�เธฒเธชเธกเธฒเธ�เธดเธ�
+	@RequestMapping("/user")/////เน€เธ�เธ�เน€เธ�๏ฟฝเน€เธ�๏ฟฝเน€เธ�เธ’เน€เธ�เธ�เน€เธ�เธ�เน€เธ�เธ’เน€เธ�๏ฟฝเน€เธ�เธ”เน€เธ�๏ฟฝ
 	public ModelAndView user(Map<String, Object> map){
 		
-		Member member = new Member();//เธชเน�เธ�เธ�เน�เธฒเน�เธกเน€เธ”เธฅเน�เธ�
+		Member member = new Member();//เน€เธ�เธ�เน€เธ�๏ฟฝเน€เธ�๏ฟฝเน€เธ�๏ฟฝเน€เธ�๏ฟฝเน€เธ�เธ’เน€เธ�๏ฟฝเน€เธ�เธ�เน€เธ�โ�ฌเน€เธ�โ€�เน€เธ�เธ…เน€เธ�๏ฟฝเน€เธ�๏ฟฝ
 		map.put("member", member);
 		map.put("memberlist",memberService.getAllMember());
 		
@@ -208,9 +210,9 @@ public class MainController {
 	
 	// End user menu
 	
-	@RequestMapping("/work")///เธ�เธฒเธ�เธ�เธฒเน�เธ�
+	@RequestMapping("/work")///เน€เธ�๏ฟฝเน€เธ�เธ’เน€เธ�๏ฟฝเน€เธ�๏ฟฝเน€เธ�เธ’เน€เธ�๏ฟฝเน€เธ�๏ฟฝ
 	public ModelAndView festivity(Map<String, Object> map) {
-		Festivity festivity = new Festivity();//เธชเน�เธ�เธ�เน�เธฒเน�เธกเน€เธ”เธฅเน�เธ�
+		Festivity festivity = new Festivity();//เน€เธ�เธ�เน€เธ�๏ฟฝเน€เธ�๏ฟฝเน€เธ�๏ฟฝเน€เธ�๏ฟฝเน€เธ�เธ’เน€เธ�๏ฟฝเน€เธ�เธ�เน€เธ�โ�ฌเน€เธ�โ€�เน€เธ�เธ…เน€เธ�๏ฟฝเน€เธ�๏ฟฝ
 		map.put("festivity", festivity);
 		map.put("festivitylist",festivityService.getAllFestivity());
 		
@@ -218,18 +220,29 @@ public class MainController {
 		Map<String,String> sexList = new TreeMap<String, String>();	
 		Map<String,String> typeList = new TreeMap<String, String>();
 		
+		List _type = typeService.getAllType();
+		List _gen = genTypeService.getAllGenType();
 		
 		typeList.put("0","");
-		typeList.put("1","ประกวดโค");
-		typeList.put("2","ประมูลโคพันธุ์");
-		typeList.put("3","ประมูลโคขุน");
+		for(int i=0;i<_type.size();i++)
+		{
+			Type t = new Type();
+			t = (Type) _type.get(i);
+			typeList.put(t.getIdtype().toString(),t.getName());
+		}
 		
 		genList.put("","");
-		genList.put("วากิว","วากิว");
-		genList.put("กำแพงแสน","กำแพงแสน");
 		
-		sexList.put("ผู้","ผู้");
-		sexList.put("เมีย","เมีย");
+		for(int i=0;i<_gen.size();i++)
+		{
+			GenType g = new GenType();
+			g = (GenType) _gen.get(i);
+			genList.put(g.getGenName(),g.getGenName());
+		}
+		
+		sexList.put("เพศผู้","เพศผู้");
+		sexList.put("เพศเมีย","เพศเมีย");
+		
 		map.put("festivity",festivity);
 		map.put("genList",genList);
 		map.put("sexList",sexList);
@@ -241,38 +254,38 @@ public class MainController {
 	
 	
 	
-	@RequestMapping("/admin_viewcowsh")////เธซเธ�เน�เธฒเธ•เธฒเธฃเธฒเธ�เน�เธ�เธ�เธฃเธฐเธ�เธงเธ”
+	@RequestMapping("/admin_viewcowsh")////เน€เธ�เธ�เน€เธ�๏ฟฝเน€เธ�๏ฟฝเน€เธ�เธ’เน€เธ�โ€ขเน€เธ�เธ’เน€เธ�เธ�เน€เธ�เธ’เน€เธ�๏ฟฝเน€เธ�๏ฟฝเน€เธ�๏ฟฝเน€เธ�๏ฟฝเน€เธ�เธ�เน€เธ�เธ�เน€เธ�๏ฟฝเน€เธ�เธ�เน€เธ�โ€�
 	public ModelAndView avish(){
 		ModelAndView model = new ModelAndView("/csa/admin/admin_viewcowsh");
 		return model;
 	}
 	
 
-	@RequestMapping("/admin_viewcow2")////เธซเธ�เน�เธฒเธ•เธฒเธฃเธฒเธ�เน�เธ�เธ�เธฑเธ�เธ�เธธเน�
+	@RequestMapping("/admin_viewcow2")////เน€เธ�เธ�เน€เธ�๏ฟฝเน€เธ�๏ฟฝเน€เธ�เธ’เน€เธ�โ€ขเน€เธ�เธ’เน€เธ�เธ�เน€เธ�เธ’เน€เธ�๏ฟฝเน€เธ�๏ฟฝเน€เธ�๏ฟฝเน€เธ�๏ฟฝเน€เธ�เธ‘เน€เธ�๏ฟฝเน€เธ�๏ฟฝเน€เธ�เธ�เน€เธ�๏ฟฝ
 	public ModelAndView avis(){
 		ModelAndView model = new ModelAndView("/csa/admin/admin_viewcow2");
 		return model;
 	}
 	
-	@RequestMapping("/admin_viewcow3")////เธซเธ�เน�เธฒเธ•เธฒเธฃเธฒเธ�เน�เธ�เธ�เธธเธ�
+	@RequestMapping("/admin_viewcow3")////เน€เธ�เธ�เน€เธ�๏ฟฝเน€เธ�๏ฟฝเน€เธ�เธ’เน€เธ�โ€ขเน€เธ�เธ’เน€เธ�เธ�เน€เธ�เธ’เน€เธ�๏ฟฝเน€เธ�๏ฟฝเน€เธ�๏ฟฝเน€เธ�๏ฟฝเน€เธ�เธ�เน€เธ�๏ฟฝ
 	public ModelAndView avise(){
 		ModelAndView model = new ModelAndView("/csa/admin/admin_viewcow3");
 		return model;
 	}
 	
-	@RequestMapping("/report")////เธซเธ�เน�เธฒเธญเธญเธ�เธฃเธฒเธขเธ�เธฒเธ�
+	@RequestMapping("/report")////เน€เธ�เธ�เน€เธ�๏ฟฝเน€เธ�๏ฟฝเน€เธ�เธ’เน€เธ�เธ�เน€เธ�เธ�เน€เธ�๏ฟฝเน€เธ�เธ�เน€เธ�เธ’เน€เธ�เธ�เน€เธ�๏ฟฝเน€เธ�เธ’เน€เธ�๏ฟฝ
 	public ModelAndView avisea(){
 		ModelAndView model = new ModelAndView("/csa/admin/report");
 		return model;
 	}
 	
-	@RequestMapping("/addfes_sh")////เธ�เธณเน�เธ�เธ�เธฃเธฐเธ�เธงเธ”เน€เธ�เน�เธฒเธฃเน�เธงเธกเธ�เธฒเธ�
+	@RequestMapping("/addfes_sh")////เน€เธ�๏ฟฝเน€เธ�เธ“เน€เธ�๏ฟฝเน€เธ�๏ฟฝเน€เธ�๏ฟฝเน€เธ�เธ�เน€เธ�เธ�เน€เธ�๏ฟฝเน€เธ�เธ�เน€เธ�โ€�เน€เธ�โ�ฌเน€เธ�๏ฟฝเน€เธ�๏ฟฝเน€เธ�เธ’เน€เธ�เธ�เน€เธ�๏ฟฝเน€เธ�เธ�เน€เธ�เธ�เน€เธ�๏ฟฝเน€เธ�เธ’เน€เธ�๏ฟฝ
 	public ModelAndView addfes(){
 		ModelAndView model = new ModelAndView("/csa/admin/addfes_sh");
 		return model;
 	}
 	
-	@RequestMapping("/newfestivity")////เน€เธ�เธดเน�เธกเธ�เธฒเธ�เน�เธ�
+	@RequestMapping("/newfestivity")////เน€เธ�โ�ฌเน€เธ�๏ฟฝเน€เธ�เธ”เน€เธ�๏ฟฝเน€เธ�เธ�เน€เธ�๏ฟฝเน€เธ�เธ’เน€เธ�๏ฟฝเน€เธ�๏ฟฝเน€เธ�๏ฟฝ
 	public ModelAndView newfestivity(Map<String, Object> map){
 		//geneList
 		Festivity festivity =new Festivity();
@@ -280,18 +293,29 @@ public class MainController {
 		Map<String,String> sexList = new TreeMap<String, String>();	
 		Map<String,String> typeList = new TreeMap<String, String>();
 		
+		List _type = typeService.getAllType();
+		List _gen = genTypeService.getAllGenType();
 		
 		typeList.put("0","");
-		typeList.put("1","ประกวดโค");
-		typeList.put("2","ประมูลโคพันธุ์");
-		typeList.put("3","ประมูลโคขุน");
+		for(int i=0;i<_type.size();i++)
+		{
+			Type t = new Type();
+			t = (Type) _type.get(i);
+			typeList.put(t.getIdtype().toString(),t.getName());
+		}
 		
 		genList.put("","");
-		genList.put("วากิว","วากิว");
-		genList.put("กำแพงแสน","กำแพงแสน");
 		
-		sexList.put("ผู้","ผู้");
-		sexList.put("เมีย","เมีย");
+		for(int i=0;i<_gen.size();i++)
+		{
+			GenType g = new GenType();
+			g = (GenType) _gen.get(i);
+			genList.put(g.getGenName(),g.getGenName());
+		}
+		
+		sexList.put("เพศผู้","เพศผู้");
+		sexList.put("เพศเมีย","เพศเมีย");
+		
 		map.put("festivity",festivity);
 		map.put("genList",genList);
 		map.put("sexList",sexList);
@@ -340,17 +364,14 @@ public class MainController {
 		festivity = festivityService.getFestivity(id);
 			
 		festivityResult.setTitle(festivity.getTitle());
-//		festivityResult.setCBirth(festivity.getCBirth());
-//		festivityResult.setCAge(festivity.getCAge());
-//		festivityResult.setCSex(festivity.getCSex());
-//		festivityResult.setCColor(festivity.getCColor());
-//		festivityResult.setCGen(festivity.getCGen());
-//		festivityResult.setCPic(festivity.getCPic());
-//		festivityResult.setFather(festivity.getFather());
-//		festivityResult.setMother(festivity.getMother());
-//		festivityResult.setDevoloper(festivity.getDevoloper());
-//		festivityResult.setMemberId(festivity.getMemberId());
-		 
+		festivityResult.setGene(festivity.getGene());
+		festivityResult.setSWork(festivity.getSWork());
+		festivityResult.setEWork(festivity.getEWork());
+		festivityResult.setSData(festivity.getSData());
+		festivityResult.setEData(festivity.getEData());		
+		festivityResult.setLogo(festivity.getLogo());
+		festivityResult.setLocation(festivity.getLocation());
+		festivityResult.setDetails(festivity.getDetails());
 
 		model.put("festivity", festivityResult);	
 		
@@ -387,7 +408,7 @@ public class MainController {
 
 
 	//test method
-	@RequestMapping("/admin")///เธซเธ�เน�เธฒเน�เธฎเธกเน�เธญเธ”เธกเธดเธ�
+	@RequestMapping("/admin")///เน€เธ�เธ�เน€เธ�๏ฟฝเน€เธ�๏ฟฝเน€เธ�เธ’เน€เธ�๏ฟฝเน€เธ�เธ�เน€เธ�เธ�เน€เธ�๏ฟฝเน€เธ�เธ�เน€เธ�โ€�เน€เธ�เธ�เน€เธ�เธ”เน€เธ�๏ฟฝ
 	public ModelAndView admin(HttpServletRequest request){
 		if(request.getAttribute("auth")==null){
 			ModelAndView model = new ModelAndView("/csa/admin/index_admin");
@@ -399,7 +420,7 @@ public class MainController {
 		}
 	}
 	
-	@RequestMapping("/logout")///ออกจากระบบ
+	@RequestMapping("/logout")///เธญเธญเธ�เธ�เธฒเธ�เธฃเธฐเธ�เธ�
 	public String logout(HttpServletRequest request){		
 			request.removeAttribute("auth");
 			return "redirect:index";

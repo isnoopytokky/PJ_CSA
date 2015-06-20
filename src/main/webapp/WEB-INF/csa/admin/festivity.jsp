@@ -120,7 +120,7 @@
 				    <td><div align="center">${festivity.type.name}</div></td>				    				    
 				    <td><div align="center">${festivity.SWork}</div></td>
 				    <td><div class="col-md-offset-3"><input type='checkbox' checked data-toggle='switch' id='custom-switch-01' /></div></td>
-			        <td><center><a><button type="button" class="btn btn-primary" onclick="onClickEdit('${festivity.no}','1')">
+			        <td><center><a><button type="button" class="btn btn-primary" onclick="onClickEdit('${festivity.no}','${festivity.type.idtype}')">
 				        	<span class="glyphicon glyphicon-pencil"></span></button></a></center></td>
 				        	
 			        <td><center><a><button type="button" class="btn btn-danger" onclick="onClickDelete('${festivity.no}','1')">
@@ -207,6 +207,7 @@
 								 	 	<option value="${type.key}">${type.value}</option>
 								 	 </c:forEach>			 	  
 								 	 </select>	
+								 	 <input type="text" id="typeid" readonly class="form-control hide"/>
 								 	 					 				 		    
 							 	</div>
 							 </div>
@@ -348,26 +349,20 @@
 	   	});
 	    
 	    function getFestivityInfo(url, params, compName) {
-	    	
-	    	debugger;
-	    	
+	    		    	    	
 		    $.post(url, params, function(data) {
 		    	debugger;
-		    	/*$("#"+ compName +"no").val(params.id);
-		    	$("#"+ compName +"CName").val(data.cattledetail.cname);
-		    	$("#"+ compName +"CBirth").val(data.cattledetail.cbirth);
-		    	$("#"+ compName +"CAge").val(data.cattledetail.cage);
-		    	$("#"+ compName +"CSex").val(data.cattledetail.csex);
-		    	//$("#"+ compName +"CColor").val(data.cattledetail.ccolor);
-		    	$("#"+ compName +"CGen").val(data.cattledetail.cgen);
-		    	$("#"+ compName +"CPic").val(data.cattledetail.cpic);
-		    	$("#"+ compName +"father").val(data.cattledetail.father);
-		    	$("#"+ compName +"mother").val(data.cattledetail.mother);
-		    	$("#"+ compName +"memberId").val(data.cattledetail.memberId);
-		    	$("#"+ compName +"devoloper").val(data.cattledetail.devoloper);
-		    	*/
-		    	//$("#typeid").val("1");
 		    	
+		    	$("#typeids").val($("#typeid").val());
+		    	$("#gene").val(data.festivity.gene);
+		    	$("#title").val(data.festivity.title);
+		    	$("#SWork").val(data.festivity.swork);
+		    	$("#EWork").val(data.festivity.swork);
+		    	$("#SData").val(data.festivity.sdata);
+		    	$("#EData").val(data.festivity.sdata);
+		    	$("#details").val(data.festivity.details);
+		    	$("#location").val(data.festivity.location);
+		    	 
 		    	
   			    });
 		}
